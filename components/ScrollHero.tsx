@@ -106,7 +106,7 @@ export default function ScrollHero({
 
   return (
     <>
-    <div ref={containerRef} style={{ height: isSmall ? "auto" : "280vh", position: "relative" }}>
+    <div ref={containerRef} style={{ height: isSmall ? "auto" : "280vh", position: "relative", backgroundColor: isDark ? "#0d0d0d" : "#fff" }}>
       <div
         ref={pinnedRef}
         style={{

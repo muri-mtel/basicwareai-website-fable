@@ -134,7 +134,7 @@ export default function SuccessStoriesSection() {
   const card = CARDS[activeIndex];
 
   return (
-    <section style={{ backgroundColor: bg, minHeight: "80vh" }}>
+    <section style={{ backgroundColor: bg }}>
       {/* ── Header ─────────────────────────────────────────────────── */}
       <div
         style={{
