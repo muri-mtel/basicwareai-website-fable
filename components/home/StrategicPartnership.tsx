@@ -81,6 +81,9 @@ export default function StrategicPartnership() {
             <p style={{ margin: 0, fontWeight: 400, lineHeight: 1.5 }}>
               {t("partnerBody2")}
             </p>
+            <p style={{ margin: 0, fontWeight: 400, lineHeight: 1.5 }}>
+              {t("partnerBody3")}
+            </p>
           </div>
         </div>
 

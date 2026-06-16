@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
+import type { CSSProperties, ReactNode } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -15,6 +16,29 @@ const IMAGES = [
   "/assets/2_practice_04.png",
   "/assets/2_practice_05.png",
 ];
+
+// Matches the order of the `grid` array in translations
+const PRODUCT_IDS: (string | null)[] = ["token", "content", "education", "employees", null];
+
+// Renders as a Link when href is provided, otherwise as a plain div
+function CardWrapper({
+  href,
+  style,
+  children,
+}: {
+  href: string | null;
+  style: CSSProperties;
+  children: ReactNode;
+}) {
+  if (href) {
+    return (
+      <Link href={href} style={{ ...style, textDecoration: "none" }}>
+        {children}
+      </Link>
+    );
+  }
+  return <div style={style}>{children}</div>;
+}
 
 const CARD_H = 144;
 const CARD_GAP = 18;
@@ -149,8 +173,9 @@ export default function PracticeAreas() {
           {/* Cards stacked */}
           <div style={{ display: "flex", flexDirection: "column", gap: `${CARD_GAP}px` }}>
             {IMAGES.map((src, i) => (
-              <div
+              <CardWrapper
                 key={i}
+                href={PRODUCT_IDS[i] ? `/${locale}/solutions/${PRODUCT_IDS[i]}` : null}
                 style={{
                   backgroundColor: "#f9f9f9",
                   border: "2px solid #fff",
@@ -160,6 +185,7 @@ export default function PracticeAreas() {
                   gap: "20px",
                   overflow: "hidden",
                   height: `${CARD_H}px`,
+                  cursor: PRODUCT_IDS[i] ? "pointer" : "default",
                 }}
               >
                 <div style={{ width: "100px", height: `${CARD_H}px`, flexShrink: 0, overflow: "hidden" }}>
@@ -196,7 +222,7 @@ export default function PracticeAreas() {
                     {t(`grid.${i}.tagline`)}
                   </p>
                 </div>
-              </div>
+              </CardWrapper>
             ))}
           </div>
         </div>
@@ -313,8 +339,9 @@ export default function PracticeAreas() {
                 }}
               >
                 {IMAGES.map((src, i) => (
-                  <div
+                  <CardWrapper
                     key={i}
+                    href={PRODUCT_IDS[i] ? `/${locale}/solutions/${PRODUCT_IDS[i]}` : null}
                     style={{
                       backgroundColor: "#f9f9f9",
                       border: "2px solid #fff",
@@ -325,6 +352,7 @@ export default function PracticeAreas() {
                       overflow: "hidden",
                       flexShrink: 0,
                       height: `${CARD_H}px`,
+                      cursor: PRODUCT_IDS[i] ? "pointer" : "default",
                     }}
                   >
                     <div style={{ width: "143px", height: `${CARD_H}px`, flexShrink: 0, overflow: "hidden" }}>
@@ -362,7 +390,7 @@ export default function PracticeAreas() {
                         {t(`grid.${i}.tagline`)}
                       </p>
                     </div>
-                  </div>
+                  </CardWrapper>
                 ))}
               </div>
             </div>

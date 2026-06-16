@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { useLocale } from "next-intl";
 import { useDark } from "@/components/ThemeProvider";
 import Reveal from "@/components/anim/Reveal";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
@@ -21,47 +22,113 @@ const LOGOS = [
   { src: "/assets/HSBC.png", height: 33, alt: "HSBC" },
 ];
 
-const CARDS = [
+type Card = {
+  quote: string;
+  author: string;
+  role: string;
+  flag: string;
+  photo: string;
+  stats: { value: string; label: string }[];
+};
+
+const CARDS_EN: Card[] = [
   {
     quote:
-      "Basicware's AI solutions transformed our business. Their team's expertise and cutting-edge technology helped us achieve unprecedented growth and efficiency across every channel.",
-    author: "Anya Sharma",
-    role: "Chief Digital Officer, CitySuper",
-    flag: "🇭🇰",
+      "A Hong Kong enterprise's HR system was built to record. We rebuilt it to think. Together we shipped an agent layer that reads policy, drafts decisions, and surfaces edge cases before they become escalations — deployed across HQ and three regional offices in 11 weeks.",
+    author: "HR Technology Company",
+    role: "Thailand",
+    flag: "🇹🇭",
     photo: "/assets/2_success_home.png",
     stats: [
-      { value: "+85%", label: "Customer Satisfaction" },
-      { value: "+300%", label: "Content Efficiency" },
-      { value: "2×", label: "Faster Delivery" },
+      { value: "+400%", label: "Operational Efficiency" },
+      { value: "11 wks", label: "Time to Deploy" },
+      { value: "4", label: "Offices Covered" },
     ],
   },
   {
     quote:
-      "Deploying AI at scale across our branches was made seamless by Basicware. The productivity gains were immediate — our teams now handle complex workflows in a fraction of the time.",
-    author: "Paul Leblanc",
-    role: "VP Technology, HSBC",
-    flag: "🇭🇰",
+      "Kotler Impact has entered into a strategic collaboration with ByteDance and Basicware AI to jointly launch AI FIRST — a transformative global initiative to deliver accessible, practical and high-value AI education to people of all ages, backgrounds and proficiency levels across the globe.",
+    author: "Kotler Impact",
+    role: "Asia",
+    flag: "🌏",
     photo: "/assets/2_success_home_a.png",
     stats: [
-      { value: "+120%", label: "Team Productivity" },
-      { value: "+65%", label: "Cost Reduction" },
-      { value: "3×", label: "Faster Processing" },
+      { value: "10+", label: "Countries" },
+      { value: "3", label: "Founding Partners" },
+      { value: "AI FIRST", label: "Global Programme" },
     ],
   },
   {
     quote:
-      "Basicware co-built a product with us that changed our entire innovation pipeline. From ideation to launch, their AI-native approach shortened every cycle and amplified our output dramatically.",
-    author: "Zane Matthews",
-    role: "Head of Innovation, Cyberport",
-    flag: "🇸🇬",
+      "We provide end-to-end services for enterprises to build exclusive AI digital employee avatars for over 50 core staff members. Through full-cycle data monitoring and AI intelligent analytics, we accurately assess employees' adaptability to the AI era, delivering actionable decision-making support for large-scale AI rollouts.",
+    author: "Local State-owned Enterprise",
+    role: "Mainland China",
+    flag: "🇨🇳",
     photo: "/assets/2_success_home_b.png",
     stats: [
-      { value: "+200%", label: "Product Velocity" },
-      { value: "+150%", label: "Revenue Growth" },
-      { value: "−40%", label: "Manual Work" },
+      { value: "50+", label: "Staff Served" },
+      { value: "24/7", label: "AI Operations" },
+      { value: "3 mo", label: "Full Rollout" },
     ],
   },
 ];
+
+const CARDS_ZH: Card[] = [
+  {
+    quote:
+      "香港某企业的原有人力资源系统仅用于数据记录，而我们对其完成了智能化重构。双方联合搭建智能代理层，可自动解读制度规章、拟定处理方案，并提前识别潜在异常问题，避免事态升级。整套方案历时 11 周，完成总部及三大区域办事处的全面落地部署。",
+    author: "人力资源科技企业",
+    role: "泰国",
+    flag: "🇹🇭",
+    photo: "/assets/2_success_home.png",
+    stats: [
+      { value: "+400%", label: "运营效率提升" },
+      { value: "11 周", label: "完成交付" },
+      { value: "4", label: "覆盖办公室" },
+    ],
+  },
+  {
+    quote:
+      "享誉全球的世界营销峰会主办机构 Kotler Impact 集团与 TikTok 母公司字节跳动、Basicware AI 达成战略合作，共同推出全球变革性项目「AI 先行计划（AI FIRST）」，旨在让全球不同年龄、不同背景、不同专业水平的人群都能接触到实用、高价值的人工智能教育。",
+    author: "Kotler Impact",
+    role: "亚洲",
+    flag: "🌏",
+    photo: "/assets/2_success_home_a.png",
+    stats: [
+      { value: "10+", label: "覆盖国家/地区" },
+      { value: "3", label: "核心创始合作方" },
+      { value: "AI FIRST", label: "全球项目" },
+    ],
+  },
+  {
+    quote:
+      "为企业 50 余名核心人员提供专属 AI 数字员工分身搭建的全流程服务。帮助企业员工快速搭建适配自身工作的专属 AI 数字分身，实现全场景工作提效；同时通过全周期数据监测与 AI 智能分析，精准评估企业员工适配 AI 时代的能力，为后续规模化 AI 部署提供可落地的决策依据。",
+    author: "国有烟草企业",
+    role: "中国大陆",
+    flag: "🇨🇳",
+    photo: "/assets/2_success_home_b.png",
+    stats: [
+      { value: "50+", label: "服务员工人数" },
+      { value: "7×24", label: "AI 自动化运营" },
+      { value: "3 月", label: "全面落地周期" },
+    ],
+  },
+];
+
+const SECTION_COPY = {
+  en: {
+    eyebrow: "Success stories",
+    title: "Trusted by the best",
+    subtitle:
+      "From government to gaming, education to e-commerce. We've co-built with partners in Hong Kong, ASEAN and beyond.",
+  },
+  zh: {
+    eyebrow: "成功案例",
+    title: "获得行业领军者的信赖",
+    subtitle:
+      "从政府到游戏，从教育到电商。我们与香港、东南亚及更广泛地区的合作伙伴共同打造解决方案。",
+  },
+};
 
 function LogoStrip({ bg, isDark }: { bg: string; isDark: boolean }) {
   return (
@@ -102,6 +169,11 @@ function LogoStrip({ bg, isDark }: { bg: string; isDark: boolean }) {
 export default function SuccessStoriesSection() {
   const { isDark } = useDark();
   const { isMobile } = useBreakpoint();
+  const locale = useLocale();
+  const isZh = locale === "zh";
+  const CARDS = isZh ? CARDS_ZH : CARDS_EN;
+  const copy = isZh ? SECTION_COPY.zh : SECTION_COPY.en;
+
   const [activeIndex, setActiveIndex] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -111,7 +183,6 @@ export default function SuccessStoriesSection() {
   const statDivider = isDark ? "rgba(255,255,255,0.08)" : "#f0f0f0";
   const textPrimary = isDark ? "#e0e0e0" : "#141414";
   const textSecondary = isDark ? "#a0a0a0" : "rgba(20,20,20,0.4)";
-  const eyebrowColor = isDark ? "#7ec8f0" : "#3b425a";
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -129,7 +200,7 @@ export default function SuccessStoriesSection() {
       });
     }, 5000);
     return () => clearInterval(id);
-  }, []);
+  }, [CARDS.length]);
 
   const card = CARDS[activeIndex];
 
@@ -146,9 +217,9 @@ export default function SuccessStoriesSection() {
           padding: "clamp(60px, 6vw, 102px) clamp(20px, 5vw, 40px) 0",
         }}
       >
-        <p className="bw-eyebrow">Success stories</p>
+        <p className="bw-eyebrow">{copy.eyebrow}</p>
         <Reveal as="h2" className="bw-display" style={{ fontSize: "clamp(34px, 4.2vw, 60px)" }}>
-          Trusted by <em>the best</em>
+          {isZh ? copy.title : <>{copy.title.split("the best")[0]}<em>the best</em></>}
         </Reveal>
         <Reveal
           as="p"
@@ -165,7 +236,7 @@ export default function SuccessStoriesSection() {
             maxWidth: "478px",
           }}
         >
-          From government to gaming, education to e-commerce. We&apos;ve co-built with partners in Hong Kong, ASEAN and beyond.
+          {copy.subtitle}
         </Reveal>
       </div>
 
@@ -214,10 +285,14 @@ export default function SuccessStoriesSection() {
                   margin: 0,
                   fontFamily: FONT,
                   fontWeight: 500,
-                  fontSize: "clamp(15px, 1.4vw, 20px)",
-                  lineHeight: 1.55,
-                  letterSpacing: "-0.22px",
+                  fontSize: "clamp(13px, 1.2vw, 17px)",
+                  lineHeight: 1.6,
+                  letterSpacing: "-0.18px",
                   color: textPrimary,
+                  display: "-webkit-box",
+                  WebkitLineClamp: 6,
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden",
                 }}
               >
                 &ldquo;{card.quote}&rdquo;

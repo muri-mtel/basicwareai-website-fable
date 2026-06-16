@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { useLocale } from "next-intl";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useDark } from "@/components/ThemeProvider";
@@ -30,7 +32,7 @@ const SOLUTIONS: Solution[] = [
     shortDesc:
       "One gateway to the world's top AI models. Connect once, switch freely, scale without limits.",
     longDesc:
-      "Stop managing multiple AI vendors, contracts, and integrations. BasicRouter gives your business a single access point to the world's leading AI models — GPT, Claude, Gemini, DeepSeek, Doubao, Qwen, Kimi, GLM, MiniMax, and more — through one unified API.",
+      "It aggregates mainstream domestic and overseas large language models including GPT, Gemini, Doubao, Qwen, Claude and DeepSeek in one stop. As one of the first overseas enterprises licensed for Seedance 2.0, we deliver enterprise-grade security, real-time cost analytics and flexible multi-cloud billing solutions, significantly cutting enterprises' expenses on multi-model integration, procurement and operation & maintenance.",
     imageSrc: "/assets/2_practice_01.png",
     testimonialIconSrc: "/assets/solutions_01.png",
     testimonialQuote:
@@ -39,7 +41,7 @@ const SOLUTIONS: Solution[] = [
     bulletsTitle: "What you get:",
     bullets: [
       "One API, instant access to 10+ leading global AI models",
-      "Switch models without changing your code",
+      "Cost Reduction & Efficiency Boost: Gain access to all models with a single integration, eliminating cumbersome multi-platform connection procedures and slashing months of development work down to just a few days",
       "Unified billing and real-time cost monitoring across your whole team",
       "Enterprise-grade security — end-to-end encryption, tiered permissions, full audit trail",
       "Direct supply from cloud providers — no data collected from your conversations",
@@ -51,7 +53,7 @@ const SOLUTIONS: Solution[] = [
     shortDesc:
       "Your teams spend too much time on tasks that don't need a human. OpenClaw deploys AI digital employees that operate around the clock.",
     longDesc:
-      "Integrate AI workers into the tools you already use and scale on demand — across customer support, sales, HR, finance, operations, and R&D.",
+      "Built for enterprises, this large-scale AI collaborative system supports one-click deployment of AI work nodes and is compatible with various collaboration platforms including Lark, WhatsApp and WeChat. Equipped with enterprise-level permission control, API key management and cost monitoring functions, it can generate digital employees for multiple roles such as marketing, customer service, sales, R&D, operation & maintenance and knowledge management. It enables 24/7 automated office operations and improves organizational collaboration efficiency.",
     imageSrc: "/assets/2_practice_02.png",
     testimonialIconSrc: "/assets/solutions_01.png",
     testimonialQuote:
@@ -64,7 +66,6 @@ const SOLUTIONS: Solution[] = [
       "Sales Assistant — lead follow-up, meeting scheduling, quote generation",
       "HR — resume screening, onboarding, employee records",
       "Finance — document verification, monthly closing, tax filing",
-      "Operations — data monitoring, alerts, automated reporting",
     ],
   },
   {
@@ -73,7 +74,7 @@ const SOLUTIONS: Solution[] = [
     shortDesc:
       "Marketing teams are under pressure to produce more — faster, in more formats, across more channels than ever.",
     longDesc:
-      "We help brands rebuild their content engine with AI at every step, turning production pressure into a competitive advantage.",
+      "We maintain deep integration with ByteDance's Douyin, TikTok and VolcEngine. Powered by AIGC technology, we mass-produce marketing assets including copywriting, images, short videos and virtual live streamers. Intelligent data algorithms enable targeted ad placement, user insight analysis and private domain operations, helping brands, e-commerce merchants and cross-border businesses cut costs, boost efficiency and lift GMV.",
     imageSrc: "/assets/2_practice_03.png",
     testimonialIconSrc: "/assets/solutions_01.png",
     testimonialQuote:
@@ -94,7 +95,7 @@ const SOLUTIONS: Solution[] = [
     shortDesc:
       "AI adoption fails when teams don't know how to use it. We help organizations close that gap.",
     longDesc:
-      "Structured training programs and globally recognized certifications — co-certified by TikTok and Pearson — that turn your people into confident AI practitioners.",
+      "Build an AI talent cultivation system covering the Asia-Pacific region. We have launched an authoritative AI certification system in partnership with BytePlus (ByteDance) and Pearson. Cooperating with universities and local governments in Hong Kong, Macao and Southeast Asia, we provide online and offline training programs to build standardized pathways for AI talent development and continuously supply skilled professionals to the industry.",
     imageSrc: "/assets/2_practice_04.png",
     testimonialIconSrc: "/assets/solutions_01.png",
     testimonialQuote:
@@ -105,6 +106,25 @@ const SOLUTIONS: Solution[] = [
       "Online courses — AI skill training accessible to teams across geographies",
       "Offline courses & assessments — in-person instruction delivered through regional partnerships",
       "AI Engineer Certification — co-certified by TikTok and Pearson, recognized by governments and enterprises across the region",
+      "Issued exclusively in joint cooperation with top-tier platforms and globally authoritative institutions, the certification carries high industry value",
+    ],
+  },
+  {
+    id: "multicloud",
+    title: "Multi-Cloud Computing Platform",
+    shortDesc:
+      "Unify global multi-cloud resources to build an elastic, unified computing foundation, delivering stable and reliable computing power for full-scenario AI applications.",
+    longDesc:
+      "We integrate resources from five major global cloud vendors including Alibaba Cloud, Tencent Cloud, AWS and Huawei Cloud to build a stable and elastic unified computing infrastructure, delivering highly reliable computing power to all types of AI applications.",
+    imageSrc: "/assets/2_practice_05.png",
+    testimonialIconSrc: "/assets/solutions_01.png",
+    testimonialQuote: "",
+    testimonialAuthor: "",
+    bulletsTitle: "Core Advantages:",
+    bullets: [
+      "Aggregate mainstream global cloud ecosystems with full resource coverage and flexible scheduling",
+      "Multi-cloud redundant architecture ensures stable operation and high availability",
+      "Unified operation and management drastically cut enterprises' costs on computing resource procurement and maintenance",
     ],
   },
 ];
@@ -163,6 +183,7 @@ const FONT = '"Plus Jakarta Sans", sans-serif';
 export default function SolutionsPage() {
   const { isDark } = useDark();
   const { isMobile } = useBreakpoint();
+  const locale = useLocale();
   const [activeTab, setActiveTab] = useState(0);
   const solution = SOLUTIONS[activeTab];
   const imageLeft = activeTab % 2 === 1;
@@ -360,6 +381,24 @@ export default function SolutionsPage() {
                   <p style={{ margin: 0, fontFamily: FONT, fontWeight: 400, fontSize: "clamp(13px, 1.1vw, 16px)", letterSpacing: "-0.176px", color: "#a9a9a9", lineHeight: "normal" }}>
                     {solution.longDesc}
                   </p>
+                  <Link
+                    href={`/${locale}/solutions/${solution.id}`}
+                    style={{
+                      alignSelf: "flex-start",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "6px",
+                      fontFamily: FONT,
+                      fontWeight: 600,
+                      fontSize: "clamp(12px, 1vw, 14px)",
+                      color: isDark ? "#79b8ff" : "#0148ae",
+                      textDecoration: "none",
+                      letterSpacing: "-0.01em",
+                      marginTop: "4px",
+                    }}
+                  >
+                    Learn more →
+                  </Link>
                 </div>
 
                 {!isMobile && (
@@ -384,6 +423,7 @@ export default function SolutionsPage() {
 
               {/* Row 2: testimonial + bullets (order alternates per product) */}
               <div style={{ display: "flex", gap: 8, flexDirection: isMobile ? "column" : (imageLeft ? "row-reverse" : "row") }}>
+                {solution.testimonialQuote && (
                 <div
                   style={{
                     flex: isMobile ? "0 0 100%" : "0 0 38%",
@@ -412,6 +452,7 @@ export default function SolutionsPage() {
                     </p>
                   </div>
                 </div>
+                )}
 
                 <div
                   style={{

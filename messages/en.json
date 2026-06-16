@@ -24,9 +24,10 @@
   "partnership": {
     "eyebrow": "· Strategic Partnership ·",
     "title": "Powered by the world's leading AI and cloud platforms",
-    "partnerTitle": "Official BytePlus Global Distributor",
-    "partnerBody1": "In strategic cooperation with Volcano Engine (ByteDance), jointly promoting the commercialization of AI solutions and co-building the AI infrastructure ecosystem.",
-    "partnerBody2": "Exclusive channel partner for the ByteDance + Pearson AI certification system in the Asia-Pacific region."
+    "partnerTitle": "Official Global Distributor of BytePlus, Regional Exclusive Distributor for major global cloud providers, and partner of the top 3 telecommunications companies in Hong Kong.",
+    "partnerBody1": "In strategic cooperation with Volcano Engine (ByteDance), jointly promoting the commercialization of AI solutions and co-building the AI infrastructure ecosystem. Exclusive channel partner for the ByteDance + Pearson AI certification system in the Asia-Pacific region.",
+    "partnerBody2": "We have established in-depth cooperation with industry leaders including Alibaba Cloud, HUAWEI Cloud, Tencent Cloud and Lark. We have obtained numerous authoritative certifications such as Alibaba Cloud Flagship Channel Partner and HUAWEI Authorized Distributor. We are also an official partner of BytePlus (ByteDance) and an authorized commercial service partner within the Lark ecosystem. These credentials lay a solid foundation of trust for our global business expansion.",
+    "partnerBody3": "3HK and Basicware AI have formed a strategic alliance, leading Hong Kong's telecommunications industry into a new era of AI Token. Via the BasicRouter platform, users can access over 60 mainstream global Large Language Models (LLMs) on demand and experience the tangible commercial value of collaborative AI multi-model operations. Featuring zero risk and no upfront payment, the platform enables simple, stable and secure access to global AI computing power."
   },
   "practice": {
     "eyebrow": "· Practice areas ·",
@@ -117,8 +118,8 @@
     ]
   },
   "footer": {
-    "tagline": "Unlock Infinite Global Opportunities with AI",
-    "subtagline": "Based in Hong Kong · Working across Southeast Asia and beyond",
+    "tagline": "Ai Enabling Infinite Global Opportunities",
+    "subtagline": "Based in Hong Kong · Working across Southeast Asia、Japan and beyond",
     "copyright": "All rights reserved."
   },
   "successStories": {
@@ -184,8 +185,8 @@
           "body": "AI should make business simpler, not harder. We cut through the noise and give our clients a clear, confident path forward."
         },
         {
-          "title": "Partnership over transactions",
-          "body": "We don't hand over a solution and walk away. We stay in it — through implementation, integration, and beyond."
+          "title": "Client as buddy.",
+          "body": "Partnership over transactions. We don't hand over a solution and walk away. We stay in it — through implementation, integration, and beyond."
         },
         {
           "title": "Outcomes over activity",
@@ -216,6 +217,16 @@
           "name": "Fox Zhang",
           "title": "Chief Marketing Officer",
           "bio": "Fox leads Basicware's market presence and growth strategy across Asia-Pacific. With a background spanning securities, investment management, and corporate leadership, he brings a sharp commercial lens to everything the brand communicates. He holds an EMBA from Tsinghua University."
+        },
+        {
+          "name": "Vulcan Zhao",
+          "title": "AI Technology Director",
+          "bio": "AI Application & Commercialization Specialist with over 10 years of experience in AI software and hardware development, with expertise in AI, data and software technologies. Skilled in technical integration and product design, capable of delivering AI products rapidly with low cost and high efficiency. Served as an AI mid-platform construction engineer at Huawei, supporting the pre-training of 3+ large models and 7+ AI transformation project scenarios within Huawei."
+        },
+        {
+          "name": "Richard Liu",
+          "title": "AI Large Model Specialist",
+          "bio": "AI and Machine Learning Specialist with 14 years of overseas academic and industrial experience, with research focus covering NLP, Reinforcement Learning, large model application and commercialization. Led cross-domain AI projects at leading tech giants including Meituan, Kuaishou and Ant Group, generating over RMB 1 billion in cumulative revenue and boosting DAU to over 10 million. Built and managed a dozens-strong algorithm team from scratch. Published 8 papers in top international conferences (including AAMAS, ICONIP), received 2 Springer PRIMA Best Paper Nominations, and holds 13 granted invention patents."
         }
       ]
     }
