@@ -255,7 +255,7 @@ export default function PracticeAreas() {
 
           <div
             style={{
-              maxWidth: "50vw",
+              maxWidth: "calc(50vw + 50px)",
               margin: "0 auto",
               width: "100%",
               display: "flex",
@@ -306,7 +306,7 @@ export default function PracticeAreas() {
               ref={listWrapperRef}
               style={{
                 flex: 1,
-                maxWidth: "630px",
+                maxWidth: "680px",
                 position: "relative",
                 height: "50vh",
                 overflow: "hidden",
