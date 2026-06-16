@@ -13,7 +13,7 @@ import { useBreakpoint } from "@/hooks/useBreakpoint";
 gsap.registerPlugin(ScrollTrigger);
 
 type HeroVariant = "aurora" | "image" | "parallax";
-const ORDER: HeroVariant[] = ["aurora", "image", "parallax"];
+const ORDER: HeroVariant[] = ["image", "parallax", "aurora"];
 
 export default function Hero() {
   const t = useTranslations("hero");
@@ -22,7 +22,7 @@ export default function Hero() {
   const { isMobile } = useBreakpoint();
   const sectionRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const [variant, setVariant] = useState<HeroVariant>("aurora");
+  const [variant, setVariant] = useState<HeroVariant>("image");
 
   useEffect(() => {
     const saved = localStorage.getItem("bw-hero-variant") as HeroVariant | null;

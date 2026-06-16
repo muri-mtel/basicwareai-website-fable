@@ -273,7 +273,7 @@ export default function SolutionsPage() {
                 textAlign: "center",
               }}
             >
-              Four ways <em>we help</em>
+              Five ways <em>we help</em>
             </h2>
 
             {/* Pill tab nav (desktop) / dropdown (mobile) */}
@@ -330,7 +330,7 @@ export default function SolutionsPage() {
                       cursor: "default",
                       fontFamily: FONT,
                       fontWeight: activeTab === i ? 600 : 400,
-                      fontSize: "clamp(12px, 1.1vw, 20px)",
+                      fontSize: "clamp(11px, 1vw, 14px)",
                       color: activeTab === i
                         ? (isDark ? "#191c26" : "#fff")
                         : (isDark ? "rgba(255,255,255,0.4)" : "rgba(25,28,38,0.4)"),

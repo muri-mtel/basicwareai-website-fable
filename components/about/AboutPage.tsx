@@ -6,7 +6,7 @@ import { useDark } from "@/components/ThemeProvider";
 import AccentWords from "@/components/anim/AccentWords";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 
-const TEAM_PHOTOS = ["Paul", "Zane", "Fox"];
+const TEAM_PHOTOS = ["Paul", "Zane", "Fox", "Vulcan", "Richard"];
 
 const FONT = '"Plus Jakarta Sans", sans-serif';
 
@@ -316,8 +316,9 @@ export default function AboutPage() {
               flexWrap: "wrap",
             }}
           >
-            {[0, 1, 2].map((i) => {
+            {[0, 1, 2, 3, 4].map((i) => {
               const name = t(`team.members.${i}.name`);
+              const hasPhoto = i < 3;
               return (
                 <div
                   key={i}
@@ -329,18 +330,38 @@ export default function AboutPage() {
                     border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid #e8e8e8",
                   }}
                 >
-                  {/* Photo */}
-                  <img
-                    src={`/assets/${TEAM_PHOTOS[i]}.png`}
-                    alt={name}
-                    style={{
-                      display: "block",
-                      width: "100%",
-                      height: "clamp(200px, 22vw, 300px)",
-                      objectFit: "cover",
-                      objectPosition: "center top",
-                    }}
-                  />
+                  {/* Photo or initials placeholder */}
+                  {hasPhoto ? (
+                    <img
+                      src={`/assets/${TEAM_PHOTOS[i]}.png`}
+                      alt={name}
+                      style={{
+                        display: "block",
+                        width: "100%",
+                        height: "clamp(200px, 22vw, 300px)",
+                        objectFit: "cover",
+                        objectPosition: "center top",
+                      }}
+                    />
+                  ) : (
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        width: "100%",
+                        height: "clamp(200px, 22vw, 300px)",
+                        backgroundColor: "#0148ae",
+                        color: "#fff",
+                        fontFamily: FONT,
+                        fontWeight: 700,
+                        fontSize: "clamp(36px, 5vw, 60px)",
+                        letterSpacing: "-0.03em",
+                      }}
+                    >
+                      {name.split(" ").map((w: string) => w[0]).join("")}
+                    </div>
+                  )}
 
                   {/* Card body */}
                   <div style={{ padding: "24px 24px 28px" }}>

@@ -14,11 +14,10 @@ const IMAGES = [
   "/assets/2_practice_02.png",
   "/assets/2_practice_03.png",
   "/assets/2_practice_04.png",
-  "/assets/2_practice_05.png",
 ];
 
 // Matches the order of the `grid` array in translations
-const PRODUCT_IDS: (string | null)[] = ["token", "content", "education", "employees", null];
+const PRODUCT_IDS: (string | null)[] = ["token", "content", "education", "employees"];
 
 // Renders as a Link when href is provided, otherwise as a plain div
 function CardWrapper({
