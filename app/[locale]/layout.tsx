@@ -9,6 +9,17 @@ export const metadata: Metadata = {
   title: "Basicware — AI Enabling infinite Global Opportunities",
   description:
     "Access the world's top AI models through a single API built for enterprises going global.",
+  icons: {
+    icon: [
+      { url: "/assets/favicon_io/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/assets/favicon_io/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/assets/favicon_io/favicon.ico" },
+    ],
+    apple: "/assets/favicon_io/apple-touch-icon.png",
+    other: [
+      { rel: "manifest", url: "/assets/favicon_io/site.webmanifest" },
+    ],
+  },
 };
 
 export default async function LocaleLayout({
