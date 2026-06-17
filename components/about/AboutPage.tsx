@@ -107,7 +107,7 @@ export default function AboutPage() {
 
           {/* Image */}
           <img
-            src="/assets/about_01.png"
+            src="/assets/about_01.avif"
             alt=""
             style={{
               display: "block",
@@ -241,7 +241,7 @@ export default function AboutPage() {
             {["about_02", "about_03"].map((name) => (
               <img
                 key={name}
-                src={`/assets/${name}.png`}
+                src={`/assets/${name}.avif`}
                 alt=""
                 style={{
                   flex: 1,

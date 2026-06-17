@@ -8,10 +8,10 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Back-to-front: landscape, midground hills, girl, foreground flowers
 const LAYERS = [
-  { src: "/assets/2_home_hero_paralax_0003.png", depth: 0.1 },
-  { src: "/assets/2_home_hero_paralax_0002.png", depth: 0.28 },
-  { src: "/assets/2_home_hero_paralax_0001.png", depth: 0.5 },
-  { src: "/assets/2_home_hero_paralax_0000.png", depth: 0.85 },
+  { src: "/assets/2_home_hero_paralax_0003.avif", depth: 0.1 },
+  { src: "/assets/2_home_hero_paralax_0002.avif", depth: 0.28 },
+  { src: "/assets/2_home_hero_paralax_0001.avif", depth: 0.5 },
+  { src: "/assets/2_home_hero_paralax_0000.avif", depth: 0.85 },
 ];
 
 export default function HeroParallax() {

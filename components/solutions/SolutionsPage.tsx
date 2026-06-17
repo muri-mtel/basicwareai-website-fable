@@ -33,7 +33,7 @@ const SOLUTIONS: Solution[] = [
       "One gateway to the world's top AI models. Connect once, switch freely, scale without limits.",
     longDesc:
       "It aggregates mainstream domestic and overseas large language models including GPT, Gemini, Doubao, Qwen, Claude and DeepSeek in one stop. As one of the first overseas enterprises licensed for Seedance 2.0, we deliver enterprise-grade security, real-time cost analytics and flexible multi-cloud billing solutions, significantly cutting enterprises' expenses on multi-model integration, procurement and operation & maintenance.",
-    imageSrc: "/assets/2_practice_01.png",
+    imageSrc: "/assets/2_practice_01.avif",
     testimonialIconSrc: "/assets/solutions_01.png",
     testimonialQuote:
       '"Basicware\'s AI solutions transformed our business. Their team\'s expertise and cutting-edge technology helped us achieve unprecedented growth and efficiency."',
@@ -54,7 +54,7 @@ const SOLUTIONS: Solution[] = [
       "Your teams spend too much time on tasks that don't need a human. OpenClaw deploys AI digital employees that operate around the clock.",
     longDesc:
       "Built for enterprises, this large-scale AI collaborative system supports one-click deployment of AI work nodes and is compatible with various collaboration platforms including Lark, WhatsApp and WeChat. Equipped with enterprise-level permission control, API key management and cost monitoring functions, it can generate digital employees for multiple roles such as marketing, customer service, sales, R&D, operation & maintenance and knowledge management. It enables 24/7 automated office operations and improves organizational collaboration efficiency.",
-    imageSrc: "/assets/2_practice_02.png",
+    imageSrc: "/assets/2_practice_02.avif",
     testimonialIconSrc: "/assets/solutions_01.png",
     testimonialQuote:
       '"OpenClaw\'s AI agents handled our customer support overnight. Response time dropped from hours to seconds, and satisfaction scores climbed 85%."',
@@ -75,7 +75,7 @@ const SOLUTIONS: Solution[] = [
       "Marketing teams are under pressure to produce more — faster, in more formats, across more channels than ever.",
     longDesc:
       "We maintain deep integration with ByteDance's Douyin, TikTok and VolcEngine. Powered by AIGC technology, we mass-produce marketing assets including copywriting, images, short videos and virtual live streamers. Intelligent data algorithms enable targeted ad placement, user insight analysis and private domain operations, helping brands, e-commerce merchants and cross-border businesses cut costs, boost efficiency and lift GMV.",
-    imageSrc: "/assets/2_practice_03.png",
+    imageSrc: "/assets/2_practice_03.avif",
     testimonialIconSrc: "/assets/solutions_01.png",
     testimonialQuote:
       '"Our TikTok account went from 3,000 to 63,200 followers in a single month. 40x growth we couldn\'t have achieved without Basicware."',
@@ -96,7 +96,7 @@ const SOLUTIONS: Solution[] = [
       "AI adoption fails when teams don't know how to use it. We help organizations close that gap.",
     longDesc:
       "Build an AI talent cultivation system covering the Asia-Pacific region. We have launched an authoritative AI certification system in partnership with BytePlus (ByteDance) and Pearson. Cooperating with universities and local governments in Hong Kong, Macao and Southeast Asia, we provide online and offline training programs to build standardized pathways for AI talent development and continuously supply skilled professionals to the industry.",
-    imageSrc: "/assets/2_practice_04.png",
+    imageSrc: "/assets/2_practice_04.avif",
     testimonialIconSrc: "/assets/solutions_01.png",
     testimonialQuote:
       '"The certification gave our team a competitive edge. Recognized across the region and valued by every enterprise client we approached."',
@@ -116,7 +116,7 @@ const SOLUTIONS: Solution[] = [
       "Unify global multi-cloud resources to build an elastic, unified computing foundation, delivering stable and reliable computing power for full-scenario AI applications.",
     longDesc:
       "We integrate resources from five major global cloud vendors including Alibaba Cloud, Tencent Cloud, AWS and Huawei Cloud to build a stable and elastic unified computing infrastructure, delivering highly reliable computing power to all types of AI applications.",
-    imageSrc: "/assets/2_practice_05.png",
+    imageSrc: "/assets/2_practice_05.avif",
     testimonialIconSrc: "/assets/solutions_01.png",
     testimonialQuote: "",
     testimonialAuthor: "",

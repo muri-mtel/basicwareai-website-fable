@@ -100,7 +100,7 @@ export default function BasicRouterPage({ locale }: { locale: string }) {
         }}
       >
         <img
-          src="/assets/2_practice_01.png"
+          src="/assets/2_practice_01.avif"
           alt=""
           style={{
             position: "absolute",

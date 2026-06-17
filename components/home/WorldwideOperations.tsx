@@ -62,7 +62,7 @@ export default function WorldwideOperations() {
               }}
             >
               <img
-                src="/assets/2_map.png"
+                src="/assets/2_map.avif"
                 alt=""
                 style={{
                   position: "absolute",

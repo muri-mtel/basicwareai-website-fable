@@ -10,10 +10,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const IMAGES = [
-  "/assets/2_practice_01.png",
-  "/assets/2_practice_02.png",
-  "/assets/2_practice_03.png",
-  "/assets/2_practice_04.png",
+  "/assets/2_practice_01.avif",
+  "/assets/2_practice_02.avif",
+  "/assets/2_practice_03.avif",
+  "/assets/2_practice_04.avif",
 ];
 
 // Matches the order of the `grid` array in translations
@@ -104,7 +104,7 @@ export default function PracticeAreas() {
         }}
       >
         <img
-          src="/assets/2_areas_bg.png"
+          src="/assets/2_areas_bg.avif"
           alt=""
           style={{
             position: "absolute",
@@ -239,7 +239,7 @@ export default function PracticeAreas() {
           }}
         >
           <img
-            src="/assets/2_areas_bg.png"
+            src="/assets/2_areas_bg.avif"
             alt=""
             style={{
               position: "absolute",

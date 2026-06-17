@@ -10,7 +10,7 @@ export default async function Solutions() {
     <>
       <Navbar />
       <ScrollHero
-        bgSrc="/assets/2_hero_Product.png"
+        bgSrc="/assets/2_hero_Product.avif"
         bgColor="#0148ae"
         overlayColor="rgba(6,51,156,0.2)"
         accentColor="#191c26"

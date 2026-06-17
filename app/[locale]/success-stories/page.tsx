@@ -10,7 +10,7 @@ export default async function SuccessStories() {
     <>
       <Navbar />
       <ScrollHero
-        bgSrc="/assets/2_Customers_hero.png"
+        bgSrc="/assets/2_Customers_hero.avif"
         bgColor="#012a65"
         overlayColor="rgba(6,29,125,0.2)"
         bgObjectPosition="center center"
