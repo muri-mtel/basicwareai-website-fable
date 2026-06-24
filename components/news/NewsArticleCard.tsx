@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import Link from "next/link";
 import { formatNewsDate, type NewsArticle } from "@/lib/news";
 import { encodeNewsTag } from "@/lib/news-tags";
@@ -9,7 +9,26 @@ import { useDark } from "@/components/ThemeProvider";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 const FONT = '"Plus Jakarta Sans", sans-serif';
-const EASE_OUT = "cubic-bezier(0.23, 1, 0.32, 1)";
+
+/** Align with CaseStudyCard on SuccessStoriesPage */
+const CARD_TEXT_GAP = "14px";
+const CARD_TAG_GAP = "8px";
+const COLOR_TITLE = { light: "#011e5b", dark: "#90c0f0" } as const;
+const COLOR_MUTED = { light: "#7c7c7c", dark: "#9a9a9a" } as const;
+const COLOR_TAG_BORDER = { light: "#b1b1b1", dark: "rgba(255, 255, 255, 0.25)" } as const;
+
+/** Listing card copy limits — overflow truncates with ellipsis */
+const TITLE_MAX_LINES = 2;
+const DESCRIPTION_MAX_LINES = 2;
+
+function lineClampStyle(maxLines: number): CSSProperties {
+  return {
+    display: "-webkit-box",
+    WebkitLineClamp: maxLines,
+    WebkitBoxOrient: "vertical",
+    overflow: "hidden",
+  };
+}
 
 type Props = {
   article: NewsArticle;
@@ -29,34 +48,35 @@ function NewsCardTag({
 
   const color = hovered
     ? isDark
-      ? "#b8d8ff"
+      ? COLOR_TITLE.dark
       : "#015ac6"
     : isDark
-      ? "#9a9a9a"
-      : "#7c7c7c";
+      ? COLOR_MUTED.dark
+      : COLOR_MUTED.light;
 
   const borderColor = hovered
     ? isDark
       ? "rgba(108, 184, 255, 0.65)"
       : "#015ac6"
     : isDark
-      ? "rgba(255, 255, 255, 0.25)"
-      : "#b1b1b1";
+      ? COLOR_TAG_BORDER.dark
+      : COLOR_TAG_BORDER.light;
 
   return (
     <Link
       href={`/${locale}/news?tag=${encodeNewsTag(tag)}`}
+      className="bw-news-card-tag"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
         border: `1px solid ${borderColor}`,
         borderRadius: "30px",
-        padding: "5px 17px",
+        padding: "4px 12px",
         fontFamily: FONT,
         fontWeight: 500,
-        fontSize: "var(--fs-body)",
+        fontSize: "var(--fs-caption)",
         color,
-        lineHeight: "normal",
+        lineHeight: 1.35,
         whiteSpace: "nowrap",
         textDecoration: "none",
         position: "relative",
@@ -72,27 +92,16 @@ function NewsCardTag({
 export default function NewsArticleCard({ article, locale }: Props) {
   const { isDark } = useDark();
   const { isMobile } = useBreakpoint();
-  const [cardHovered, setCardHovered] = useState(false);
-  const [tagHoverCount, setTagHoverCount] = useState(0);
   const isZh = locale === "zh";
-  const title = isZh ? article.zh.title : article.en.title;
+  const localeCopy = isZh ? article.zh : article.en;
+  const title = localeCopy.title;
+  const description = localeCopy.description;
 
-  const titleHovered = cardHovered && tagHoverCount === 0;
-  const titleColor = titleHovered
-    ? isDark
-      ? "#b8d8ff"
-      : "#015ac6"
-    : isDark
-      ? "#90c0f0"
-      : "#011e5b";
+  const titleColor = isDark ? COLOR_TITLE.dark : COLOR_TITLE.light;
+  const mutedColor = isDark ? COLOR_MUTED.dark : COLOR_MUTED.light;
 
   return (
     <article
-      onMouseEnter={() => setCardHovered(true)}
-      onMouseLeave={() => {
-        setCardHovered(false);
-        setTagHoverCount(0);
-      }}
       style={{
         position: "relative",
         display: "block",
@@ -123,61 +132,79 @@ export default function NewsArticleCard({ article, locale }: Props) {
           pointerEvents: "none",
         }}
       >
-        <NewsThumbnail coverSrc={article.coverSrc} alt={title} />
+        <NewsThumbnail coverSrc={article.coverSrc} alt={title} borderRadius="12px" />
 
         <div
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: "20px",
+            gap: CARD_TEXT_GAP,
             flex: 1,
             minWidth: 0,
-            paddingTop: isMobile ? 0 : "4px",
+            paddingTop: isMobile ? 0 : "2px",
           }}
         >
-        <p
-          style={{
-            margin: 0,
-            fontFamily: FONT,
-            fontWeight: 400,
-            fontSize: "var(--fs-body)",
-            color: "#757575",
-          }}
-        >
-          {formatNewsDate(article.publishedAt, locale)}
-        </p>
+          <p
+            style={{
+              margin: 0,
+              fontFamily: FONT,
+              fontWeight: 400,
+              fontSize: "var(--fs-body-sm)",
+              lineHeight: 1.4,
+              letterSpacing: "-0.132px",
+              color: mutedColor,
+            }}
+          >
+            {formatNewsDate(article.publishedAt, locale)}
+          </p>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
           <p
             style={{
               margin: 0,
               fontFamily: FONT,
               fontWeight: 600,
-              fontSize: "var(--fs-heading-sm)",
+              fontSize: "var(--fs-heading-md)",
               lineHeight: 1.2,
               letterSpacing: "-0.264px",
               color: titleColor,
-              transition: `color 160ms ${EASE_OUT}`,
+              ...lineClampStyle(TITLE_MAX_LINES),
             }}
+            title={title}
           >
             {title}
           </p>
 
+          {description ? (
+            <p
+              style={{
+                margin: 0,
+                fontFamily: FONT,
+                fontWeight: 400,
+                fontSize: "var(--fs-body-sm)",
+                lineHeight: 1.55,
+                letterSpacing: "-0.154px",
+                color: mutedColor,
+                textWrap: "pretty",
+                ...lineClampStyle(DESCRIPTION_MAX_LINES),
+              }}
+              title={description}
+            >
+              {description}
+            </p>
+          ) : null}
+
           <div
             style={{
               display: "flex",
-              gap: "8px",
+              gap: CARD_TAG_GAP,
               flexWrap: "wrap",
               pointerEvents: "auto",
             }}
-            onMouseEnter={() => setTagHoverCount((count) => count + 1)}
-            onMouseLeave={() => setTagHoverCount((count) => Math.max(0, count - 1))}
           >
             {article.tags.map((tag) => (
               <NewsCardTag key={tag} tag={tag} locale={locale} isDark={isDark} />
             ))}
           </div>
-        </div>
         </div>
       </div>
     </article>

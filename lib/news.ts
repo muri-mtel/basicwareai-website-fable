@@ -6,8 +6,8 @@ export type NewsArticle = {
   /** When set, used as the listing thumbnail and detail page cover image. */
   coverSrc?: string;
   tags: string[];
-  en: { title: string; detailTitle?: string };
-  zh: { title: string; detailTitle?: string };
+  en: { title: string; detailTitle?: string; description?: string };
+  zh: { title: string; detailTitle?: string; description?: string };
   detail: NewsArticleDetail;
 };
 
@@ -22,20 +22,26 @@ export function getHomeNewsArticles(): NewsArticle[] {
  * To add an article with a custom image, set `coverSrc` — it is used for both
  * the listing thumbnail and the detail page cover. Omit it to use the default
  * blue logo thumbnail and blue headline banner on the detail page.
+ * Set `description` on en/zh for the listing card excerpt under the title.
  */
 export const NEWS_ARTICLES: NewsArticle[] = [
   {
     slug: "3hk-alibaba-basicware-alliance",
     publishedAt: "2026-06-17",
-    tags: ["3HK / 3SUPREME", "Alibaba Cloud", "Basicware AI"],
+    tags: ["3HK / 3SUPREME", "Basicware AI", "BasicRouter"],
     en: {
-      title:
-        "Hutchison Telecom and Basicware AI Form Strategic Alliance with Alibaba Cloud",
+      title: "HTHK Expands Customers' AI Lifestyles with INMO GO3 AI Glasses Launch",
+      detailTitle:
+        "HTHK expands customers' AI lifestyles with INMO GO3 AI glasses launch\nDrives AI adoption through start-up collaboration, showcasing \"3 for You\" brand value",
+      description:
+        "HTHK unveils INMO GO3 AI glasses, an AI Travel Planner, and partners with Basicware AI to offer complimentary AI Tokens via BasicRouter for new and renewing subscribers.",
     },
     zh: {
-      title: "和記電訊與Basicware AI攜手阿里雲達成戰略聯盟",
+      title: "和記電訊香港開拓 AI 生活圈　率先推出嶄新 INMO GO3 AI 眼鏡",
       detailTitle:
-        "和記電訊香港與Basicware AI達成戰略性聯盟\n攜手阿里雲　引領全港電訊業踏入AI Token新紀元",
+        "和記電訊香港開拓 AI 生活圈\n率先推出嶄新 INMO GO3 AI 眼鏡",
+      description:
+        "和記電訊香港推出 INMO GO3 AI 眼鏡、「AI 旅助理」服務，並夥拍 Basicware AI 透過 BasicRouter 向新上台及續約客戶送贈 AI 詞元。",
     },
     detail: "3hk-alibaba-basicware-alliance",
   },
@@ -69,6 +75,32 @@ export function paginateNewsArticles(
     totalCount: filtered.length,
     activeTag: tag ?? null,
   };
+}
+
+function getNewsLocaleCopy(article: NewsArticle, locale: string) {
+  return locale === "zh" ? article.zh : article.en;
+}
+
+/** Full headline on the detail cover (may include line breaks). */
+export function getNewsArticleCoverTitle(article: NewsArticle, locale: string): string {
+  const copy = getNewsLocaleCopy(article, locale);
+  return copy.detailTitle ?? copy.title;
+}
+
+/** Primary headline line for breadcrumbs and metadata. */
+export function getNewsArticleBreadcrumbLabel(article: NewsArticle, locale: string): string {
+  return getNewsArticleCoverTitle(article, locale).split("\n")[0].trim();
+}
+
+/** Headline and optional subhead for the detail cover hero. */
+export function getNewsArticleCoverHeadlines(
+  article: NewsArticle,
+  locale: string,
+): { headline: string; subhead?: string } {
+  const raw = getNewsArticleCoverTitle(article, locale);
+  const [headline, ...rest] = raw.split("\n");
+  const subhead = rest.join("\n").trim();
+  return subhead ? { headline: headline.trim(), subhead } : { headline: headline.trim() };
 }
 
 export function formatNewsDate(isoDate: string, locale: string): string {

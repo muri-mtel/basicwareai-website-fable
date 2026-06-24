@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PressRelease3HK from "@/components/press-releases/PressRelease3HK";
-import { getNewsArticle } from "@/lib/news";
+import { getNewsArticle, getNewsArticleBreadcrumbLabel } from "@/lib/news";
 
 export default async function PressRelease3HKRoute({
   params,
@@ -11,9 +11,7 @@ export default async function PressRelease3HKRoute({
   const { locale } = await params;
   const article = getNewsArticle("3hk-alibaba-basicware-alliance");
   const articleTitle = article
-    ? locale === "zh"
-      ? article.zh.title
-      : article.en.title
+    ? getNewsArticleBreadcrumbLabel(article, locale)
     : undefined;
 
   return (

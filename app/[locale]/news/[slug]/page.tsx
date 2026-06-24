@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PressRelease3HK from "@/components/press-releases/PressRelease3HK";
 import NewsArticleCover from "@/components/news/NewsArticleCover";
-import { getNewsArticle } from "@/lib/news";
+import { getNewsArticle, getNewsArticleBreadcrumbLabel } from "@/lib/news";
 
 const DETAIL_COMPONENTS = {
   "3hk-alibaba-basicware-alliance": PressRelease3HK,
@@ -22,7 +22,7 @@ export default async function NewsArticleRoute({
   const DetailComponent = DETAIL_COMPONENTS[article.detail];
   if (!DetailComponent) notFound();
 
-  const articleTitle = locale === "zh" ? article.zh.title : article.en.title;
+  const articleTitle = getNewsArticleBreadcrumbLabel(article, locale);
 
   return (
     <>

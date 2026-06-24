@@ -15,7 +15,6 @@ import { useBreakpoint } from "@/hooks/useBreakpoint";
 gsap.registerPlugin(ScrollTrigger);
 
 const FONT = '"Plus Jakarta Sans", sans-serif';
-const EASE_OUT = "cubic-bezier(0.23, 1, 0.32, 1)";
 const BG = "#f9f9f9";
 const CONTENT_MAX = "1080px";
 const H_PAD = "clamp(20px, 5vw, 40px)";
@@ -24,8 +23,9 @@ const SECTION_PAD_BOTTOM = "clamp(72px, 9vw, 120px)";
 const SECTION_PAD = `${SECTION_PAD_TOP} ${H_PAD} ${SECTION_PAD_BOTTOM}`;
 const DIVIDER = "#e8e8e8";
 const CARD_DIVIDER_PAD = "clamp(24px, 3vw, 32px)";
-const ENTER_DURATION = 0.5;
-const ENTER_STAGGER = 0.05;
+const ENTER_DURATION = 0.45;
+const ENTER_STAGGER = 0.1;
+const ENTER_OFFSET = 12;
 
 function SectionHeading({ locale }: { locale: string }) {
   const tNews = useTranslations("newsPage");
@@ -33,10 +33,18 @@ function SectionHeading({ locale }: { locale: string }) {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
-      <p className="bw-eyebrow" style={{ color: "rgba(20,20,20,0.45)" }}>
+      <p
+        data-news-home-enter
+        className="bw-eyebrow"
+        style={{ color: "rgba(20,20,20,0.45)" }}
+      >
         {tNews("sectionEyebrow")}
       </p>
-      <h2 className="bw-display" style={{ margin: 0, fontSize: "var(--fs-heading-lg)" }}>
+      <h2
+        data-news-home-enter
+        className="bw-display"
+        style={{ margin: 0, fontSize: "var(--fs-heading-lg)", textWrap: "balance" }}
+      >
         {tNews("sectionTitleLine1")}
         <br />
         <em
@@ -50,30 +58,30 @@ function SectionHeading({ locale }: { locale: string }) {
           {tNews("sectionTitleAccent")}
         </em>
       </h2>
-      <Link
-        href={`/${locale}/news`}
-        className="bw-btn bw-home-news-cta"
-        style={{
-          display: "inline-flex",
-          alignItems: "center",
-          gap: "10px",
-          alignSelf: "flex-start",
-          backgroundColor: "#141414",
-          borderRadius: "40px",
-          padding: "10px 20px",
-          textDecoration: "none",
-          color: "#fafafa",
-          fontFamily: FONT,
-          fontWeight: 600,
-          fontSize: "var(--fs-body-sm)",
-          letterSpacing: "-0.154px",
-          whiteSpace: "nowrap",
-          transition: `transform 160ms ${EASE_OUT}`,
-        }}
-      >
-        {tHome("viewAll")}
-        <img src="/assets/arrow-white.svg" alt="" width={13} height={13} style={{ display: "block" }} />
-      </Link>
+      <div data-news-home-enter style={{ alignSelf: "flex-start" }}>
+        <Link
+          href={`/${locale}/news`}
+          className="bw-btn"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "10px",
+            backgroundColor: "#141414",
+            borderRadius: "40px",
+            padding: "10px 20px",
+            textDecoration: "none",
+            color: "#fafafa",
+            fontFamily: FONT,
+            fontWeight: 600,
+            fontSize: "var(--fs-body-sm)",
+            letterSpacing: "-0.154px",
+            whiteSpace: "nowrap",
+          }}
+        >
+          {tHome("viewAll")}
+          <img src="/assets/arrow-white.svg" alt="" width={13} height={13} style={{ display: "block" }} />
+        </Link>
+      </div>
     </div>
   );
 }
@@ -85,6 +93,7 @@ function NewsCardList({ articles, locale }: { articles: NewsArticle[]; locale: s
         <div
           key={article.slug}
           data-news-home-item
+          data-news-home-key={article.slug}
           style={{
             width: "100%",
             borderBottom: index < articles.length - 1 ? `1px solid ${DIVIDER}` : "none",
@@ -102,14 +111,10 @@ function NewsCardList({ articles, locale }: { articles: NewsArticle[]; locale: s
 function SectionLayout({
   locale,
   articles,
-  headingRef,
-  listRef,
   stickyHeading,
 }: {
   locale: string;
   articles: NewsArticle[];
-  headingRef: React.RefObject<HTMLDivElement | null>;
-  listRef: React.RefObject<HTMLDivElement | null>;
   stickyHeading: boolean;
 }) {
   return (
@@ -128,8 +133,6 @@ function SectionLayout({
       }}
     >
       <div
-        ref={headingRef}
-        data-news-home-heading
         style={
           stickyHeading
             ? {
@@ -143,29 +146,36 @@ function SectionLayout({
         <SectionHeading locale={locale} />
       </div>
 
-      <div ref={listRef} style={{ minWidth: 0 }}>
+      <div style={{ minWidth: 0 }}>
         <NewsCardList articles={articles} locale={locale} />
       </div>
     </div>
   );
 }
 
-function NewsSectionShell({ children }: { children: ReactNode }) {
+function NewsSectionShell({
+  children,
+  animate,
+}: {
+  children: ReactNode;
+  animate: boolean;
+}) {
   return (
-    <section className="bw-home-news" style={{ backgroundColor: BG }}>
+    <section
+      className={`bw-home-news${animate ? " bw-home-news--animate" : ""}`}
+      style={{ backgroundColor: BG }}
+    >
       {children}
       <style>{`
-        @media (hover: hover) and (pointer: fine) {
-          .bw-home-news-cta:hover {
-            transform: scale(1.02);
-          }
-        }
-        .bw-home-news-cta:active {
-          transform: scale(0.97);
+        .bw-home-news--animate [data-news-home-enter]:not([data-news-animated]),
+        .bw-home-news--animate [data-news-home-item]:not([data-news-animated]) {
+          opacity: 0;
+          transform: translate3d(0, ${ENTER_OFFSET}px, 0);
         }
         @media (prefers-reduced-motion: reduce) {
-          .bw-home-news-cta:hover,
-          .bw-home-news-cta:active {
+          .bw-home-news--animate [data-news-home-enter]:not([data-news-animated]),
+          .bw-home-news--animate [data-news-home-item]:not([data-news-animated]) {
+            opacity: 1;
             transform: none;
           }
         }
@@ -176,7 +186,7 @@ function NewsSectionShell({ children }: { children: ReactNode }) {
 
 export default function NewsSection() {
   const locale = useLocale();
-  const { showMock, setShowMock } = useNewsMock();
+  const { showMock, setShowMock, hydrated: mockHydrated } = useNewsMock();
   const articles = getHomeNewsArticlesWithMock(showMock);
   const { isMobile } = useBreakpoint();
   const [reduceMotion] = useState(() =>
@@ -186,42 +196,71 @@ export default function NewsSection() {
   );
   const animate = !reduceMotion;
 
-  const sectionRef = useRef<HTMLElement>(null);
-  const headingRef = useRef<HTMLDivElement>(null);
-  const listRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const hasScrolledInRef = useRef(false);
 
   useEffect(() => {
-    if (!animate || !sectionRef.current) return;
+    const section = sectionRef.current;
+    if (!section || !mockHydrated) return;
 
-    const heading = sectionRef.current.querySelector("[data-news-home-heading]");
-    const items = sectionRef.current.querySelectorAll("[data-news-home-item]");
-    if (!items.length) return;
+    const pending = gsap.utils
+      .toArray<HTMLElement>("[data-news-home-enter], [data-news-home-item]", section)
+      .filter((el) => !el.dataset.newsAnimated);
+
+    if (!pending.length) return;
+
+    if (!animate) {
+      pending.forEach((el) => {
+        el.dataset.newsAnimated = "true";
+      });
+      gsap.set(pending, { opacity: 1, y: 0, clearProps: "transform" });
+      return;
+    }
 
     const ctx = gsap.context(() => {
-      const targets = heading ? [heading, ...items] : items;
-      gsap.from(targets, {
-        y: 10,
-        opacity: 0,
-        duration: ENTER_DURATION,
-        stagger: heading ? ENTER_STAGGER : ENTER_STAGGER,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 85%",
-          once: true,
+      gsap.set(pending, { y: ENTER_OFFSET, opacity: 0, force3D: true });
+
+      const reveal = () => {
+        gsap.to(pending, {
+          y: 0,
+          opacity: 1,
+          duration: ENTER_DURATION,
+          stagger: ENTER_STAGGER,
+          ease: "power3.out",
+          onComplete: () => {
+            pending.forEach((el) => {
+              el.dataset.newsAnimated = "true";
+            });
+            gsap.set(pending, { clearProps: "transform,opacity" });
+          },
+        });
+      };
+
+      if (hasScrolledInRef.current) {
+        reveal();
+        return;
+      }
+
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top 88%",
+        once: true,
+        onEnter: () => {
+          hasScrolledInRef.current = true;
+          reveal();
         },
       });
-    }, sectionRef);
+    }, section);
 
     return () => ctx.revert();
-  }, [animate, articles.length, showMock]);
+  }, [animate, showMock, articles.length, mockHydrated]);
 
   if (articles.length === 0) return null;
 
   const mockToggle = <NewsMockToggle enabled={showMock} onChange={setShowMock} />;
 
   return (
-    <NewsSectionShell>
+    <NewsSectionShell animate={animate && mockHydrated}>
       <div
         ref={sectionRef}
         style={{
@@ -229,13 +268,7 @@ export default function NewsSection() {
           boxSizing: "border-box",
         }}
       >
-        <SectionLayout
-          locale={locale}
-          articles={articles}
-          headingRef={headingRef}
-          listRef={listRef}
-          stickyHeading={!isMobile}
-        />
+        <SectionLayout locale={locale} articles={articles} stickyHeading={!isMobile} />
       </div>
       {mockToggle}
     </NewsSectionShell>

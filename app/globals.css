@@ -314,6 +314,17 @@ html.dark .bw-grain {
   display: block;
 }
 
+/* ── News card tag hit area ───────────────────────────────── */
+.bw-news-card-tag::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+}
+
 /* ── Image hover treatment ────────────────────────────────── */
 .bw-img-zoom {
   overflow: hidden;

@@ -8,12 +8,20 @@ export const IS_NEWS_MOCK_DEV = process.env.NODE_ENV === "development";
 /** 10 mocks + 1 real article → 11 total, 2 pages at PAGE_SIZE 10 */
 export const NEWS_MOCK_COUNT = 10;
 
+const MOCK_LOREM_EN =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+
+const MOCK_LOREM_ZH =
+  "此为开发预览用的示例摘要文字，用于展示新闻列表卡片描述区域的排版与行数截断效果。";
+
 const MOCK_COPY: Array<{
   slug: string;
   publishedAt: string;
   tags: string[];
   en: string;
   zh: string;
+  enDesc?: string;
+  zhDesc?: string;
 }> = [
   {
     slug: "__mock-regional-expansion",
@@ -91,8 +99,8 @@ export const NEWS_MOCK_ARTICLES: NewsArticle[] = MOCK_COPY.map((item) => ({
   slug: item.slug,
   publishedAt: item.publishedAt,
   tags: item.tags,
-  en: { title: item.en },
-  zh: { title: item.zh },
+  en: { title: item.en, description: item.enDesc ?? MOCK_LOREM_EN },
+  zh: { title: item.zh, description: item.zhDesc ?? MOCK_LOREM_ZH },
   detail: "3hk-alibaba-basicware-alliance",
 }));
 
