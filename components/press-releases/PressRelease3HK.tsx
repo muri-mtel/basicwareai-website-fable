@@ -231,6 +231,7 @@ export default function PressRelease3HK({
   const subtle = isDark ? "#1a1a1a" : "#f5f5f7";
   const border = isDark ? "rgba(255,255,255,0.08)" : "#e8e8e8";
   const accent = "#0148ae";
+  const linkColor = isDark ? "var(--c-accent)" : accent;
 
   const highlightBullets = isZh ? HIGHLIGHT_BULLETS_ZH : HIGHLIGHT_BULLETS_EN;
   const raymondHo = isZh ? RAYMOND_HO_QUOTE.zh : RAYMOND_HO_QUOTE.en;
@@ -557,7 +558,7 @@ export default function PressRelease3HK({
               和記電訊香港致力推動 AI 應用，讓客戶體驗人工智能如何提升生產力，率先夥拍 Basicware AI 向客戶送贈共
               800 億個 AI Tokens。由 7 月 1 日起，3 香港或 3SUPREME 新上台或續約 5G 月費計劃的客戶，每人可獲贈
               1,000 萬個 AI Tokens²，於大模型路由平台 BasicRouter（
-              <a href="https://basicrouter.ai" target="_blank" rel="noopener noreferrer" style={{ color: accent }}>
+              <a href="https://basicrouter.ai" target="_blank" rel="noopener noreferrer" style={{ color: linkColor }}>
                 basicrouter.ai
               </a>
               ），免費體驗阿里雲及字節跳動旗下 BytePlus 的大模型功能，當中包括文字生成、圖片生成，以及支援快速生成專業影片。免費
@@ -570,7 +571,7 @@ export default function PressRelease3HK({
               Tokens to customers. Starting from 1 July, 3 Hong Kong or 3SUPREME customers subscribing to or renewing
               their 5G plans will each receive 10 million AI Tokens². These can be used for free on the one-stop AI model
               aggregation platform, BasicRouter (
-              <a href="https://basicrouter.ai" target="_blank" rel="noopener noreferrer" style={{ color: accent }}>
+              <a href="https://basicrouter.ai" target="_blank" rel="noopener noreferrer" style={{ color: linkColor }}>
                 basicrouter.ai
               </a>
               ), to experience the capabilities of AI models from Alibaba Cloud and BytePlus, including text generation,
@@ -664,13 +665,23 @@ export default function PressRelease3HK({
             gap: isMobile ? "20px" : "32px",
             alignItems: "flex-start",
             marginBottom: "40px",
+            ...(isDark && {
+              backgroundColor: "#141414",
+              border: `1px solid ${border}`,
+              borderRadius: "20px",
+              padding: "clamp(22px, 2.5vw, 36px)",
+            }),
           }}
         >
           <div
             style={{
               flexShrink: 0,
+              alignSelf: "flex-start",
               width: isMobile ? "min(100%, 160px)" : "140px",
-              padding: "4px 0",
+              padding: isDark ? "12px 14px" : "4px 0",
+              backgroundColor: isDark ? "#ffffff" : "transparent",
+              borderRadius: isDark ? "12px" : undefined,
+              boxSizing: "border-box",
             }}
           >
             <img
@@ -737,7 +748,7 @@ export default function PressRelease3HK({
                     href="https://www.hthkh.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{ color: accent }}
+                    style={{ color: linkColor }}
                   >
                     www.hthkh.com
                   </a>
@@ -752,7 +763,7 @@ export default function PressRelease3HK({
                     href="https://www.hthkh.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{ color: accent }}
+                    style={{ color: linkColor }}
                   >
                     www.hthkh.com
                   </a>
@@ -792,7 +803,7 @@ export default function PressRelease3HK({
               fontFamily: FONT,
               fontWeight: 500,
               fontSize: "var(--fs-body-sm)",
-              color: accent,
+              color: linkColor,
               textDecoration: "none",
             }}
           >

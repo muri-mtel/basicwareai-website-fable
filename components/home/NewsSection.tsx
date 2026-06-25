@@ -9,35 +9,30 @@ import type { NewsArticle } from "@/lib/news";
 import { getHomeNewsArticlesWithMock } from "@/lib/news-mock";
 import NewsArticleCard from "@/components/news/NewsArticleCard";
 import NewsMockToggle from "@/components/news/NewsMockToggle";
+import { useDark } from "@/components/ThemeProvider";
 import { useNewsMock } from "@/hooks/useNewsMock";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const FONT = '"Plus Jakarta Sans", sans-serif';
-const BG = "#f9f9f9";
 const CONTENT_MAX = "1080px";
 const H_PAD = "clamp(20px, 5vw, 40px)";
 const SECTION_PAD_TOP = "clamp(48px, 6vw, 72px)";
 const SECTION_PAD_BOTTOM = "clamp(72px, 9vw, 120px)";
 const SECTION_PAD = `${SECTION_PAD_TOP} ${H_PAD} ${SECTION_PAD_BOTTOM}`;
-const DIVIDER = "#e8e8e8";
 const CARD_DIVIDER_PAD = "clamp(24px, 3vw, 32px)";
 const ENTER_DURATION = 0.45;
 const ENTER_STAGGER = 0.1;
 const ENTER_OFFSET = 12;
 
-function SectionHeading({ locale }: { locale: string }) {
+function SectionHeading({ locale, isDark }: { locale: string; isDark: boolean }) {
   const tNews = useTranslations("newsPage");
   const tHome = useTranslations("homeNews");
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
-      <p
-        data-news-home-enter
-        className="bw-eyebrow"
-        style={{ color: "rgba(20,20,20,0.45)" }}
-      >
+      <p data-news-home-enter className="bw-eyebrow">
         {tNews("sectionEyebrow")}
       </p>
       <h2
@@ -47,16 +42,7 @@ function SectionHeading({ locale }: { locale: string }) {
       >
         {tNews("sectionTitleLine1")}
         <br />
-        <em
-          style={{
-            fontFamily: "var(--font-serif)",
-            fontStyle: "italic",
-            fontWeight: 400,
-            color: "#015ac6",
-          }}
-        >
-          {tNews("sectionTitleAccent")}
-        </em>
+        <em>{tNews("sectionTitleAccent")}</em>
       </h2>
       <div data-news-home-enter style={{ alignSelf: "flex-start" }}>
         <Link
@@ -66,11 +52,11 @@ function SectionHeading({ locale }: { locale: string }) {
             display: "inline-flex",
             alignItems: "center",
             gap: "10px",
-            backgroundColor: "#141414",
+            backgroundColor: isDark ? "#ececea" : "#141414",
             borderRadius: "40px",
             padding: "10px 20px",
             textDecoration: "none",
-            color: "#fafafa",
+            color: isDark ? "#111110" : "#fafafa",
             fontFamily: FONT,
             fontWeight: 600,
             fontSize: "var(--fs-body-sm)",
@@ -79,14 +65,28 @@ function SectionHeading({ locale }: { locale: string }) {
           }}
         >
           {tHome("viewAll")}
-          <img src="/assets/arrow-white.svg" alt="" width={13} height={13} style={{ display: "block" }} />
+          <img
+            src={isDark ? "/assets/arrow-dark.svg" : "/assets/arrow-white.svg"}
+            alt=""
+            width={13}
+            height={13}
+            style={{ display: "block" }}
+          />
         </Link>
       </div>
     </div>
   );
 }
 
-function NewsCardList({ articles, locale }: { articles: NewsArticle[]; locale: string }) {
+function NewsCardList({
+  articles,
+  locale,
+  dividerColor,
+}: {
+  articles: NewsArticle[];
+  locale: string;
+  dividerColor: string;
+}) {
   return (
     <>
       {articles.map((article, index) => (
@@ -96,7 +96,7 @@ function NewsCardList({ articles, locale }: { articles: NewsArticle[]; locale: s
           data-news-home-key={article.slug}
           style={{
             width: "100%",
-            borderBottom: index < articles.length - 1 ? `1px solid ${DIVIDER}` : "none",
+            borderBottom: index < articles.length - 1 ? `1px solid ${dividerColor}` : "none",
             paddingTop: index > 0 ? CARD_DIVIDER_PAD : 0,
             paddingBottom: index < articles.length - 1 ? CARD_DIVIDER_PAD : 0,
           }}
@@ -112,10 +112,14 @@ function SectionLayout({
   locale,
   articles,
   stickyHeading,
+  isDark,
+  dividerColor,
 }: {
   locale: string;
   articles: NewsArticle[];
   stickyHeading: boolean;
+  isDark: boolean;
+  dividerColor: string;
 }) {
   return (
     <div
@@ -143,11 +147,11 @@ function SectionLayout({
             : undefined
         }
       >
-        <SectionHeading locale={locale} />
+        <SectionHeading locale={locale} isDark={isDark} />
       </div>
 
       <div style={{ minWidth: 0 }}>
-        <NewsCardList articles={articles} locale={locale} />
+        <NewsCardList articles={articles} locale={locale} dividerColor={dividerColor} />
       </div>
     </div>
   );
@@ -156,14 +160,16 @@ function SectionLayout({
 function NewsSectionShell({
   children,
   animate,
+  isDark,
 }: {
   children: ReactNode;
   animate: boolean;
+  isDark: boolean;
 }) {
   return (
     <section
       className={`bw-home-news${animate ? " bw-home-news--animate" : ""}`}
-      style={{ backgroundColor: BG }}
+      style={{ backgroundColor: isDark ? "#111111" : "#f9f9f9" }}
     >
       {children}
       <style>{`
@@ -186,7 +192,9 @@ function NewsSectionShell({
 
 export default function NewsSection() {
   const locale = useLocale();
+  const { isDark } = useDark();
   const { showMock, setShowMock, hydrated: mockHydrated } = useNewsMock();
+  const dividerColor = isDark ? "rgba(255,255,255,0.08)" : "#e8e8e8";
   const articles = getHomeNewsArticlesWithMock(showMock);
   const { isMobile } = useBreakpoint();
   const [reduceMotion] = useState(() =>
@@ -260,7 +268,7 @@ export default function NewsSection() {
   const mockToggle = <NewsMockToggle enabled={showMock} onChange={setShowMock} />;
 
   return (
-    <NewsSectionShell animate={animate && mockHydrated}>
+    <NewsSectionShell animate={animate && mockHydrated} isDark={isDark}>
       <div
         ref={sectionRef}
         style={{
@@ -268,7 +276,13 @@ export default function NewsSection() {
           boxSizing: "border-box",
         }}
       >
-        <SectionLayout locale={locale} articles={articles} stickyHeading={!isMobile} />
+        <SectionLayout
+          locale={locale}
+          articles={articles}
+          stickyHeading={!isMobile}
+          isDark={isDark}
+          dividerColor={dividerColor}
+        />
       </div>
       {mockToggle}
     </NewsSectionShell>

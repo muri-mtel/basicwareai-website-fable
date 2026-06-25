@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useDark } from "@/components/ThemeProvider";
 
 const FONT = '"Plus Jakarta Sans", sans-serif';
 
@@ -35,25 +36,35 @@ function PageButton({
   active,
   onClick,
   ariaLabel,
+  isDark,
 }: {
   children: React.ReactNode;
   active?: boolean;
   onClick?: () => void;
   ariaLabel?: string;
+  isDark: boolean;
 }) {
+  const borderColor = active
+    ? "var(--c-accent)"
+    : isDark
+      ? "rgba(255,255,255,0.22)"
+      : "#e8e8e8";
+  const textColor = active ? "#fff" : isDark ? "#c8c8c8" : "#7c7c7c";
+
   return (
     <button
       type="button"
       onClick={onClick}
       aria-label={ariaLabel}
       aria-current={active ? "page" : undefined}
+      disabled={!onClick}
       style={{
         width: "36px",
         height: "36px",
         borderRadius: "100px",
-        border: active ? "1px solid #015ac6" : "1px solid #e8e8e8",
-        backgroundColor: active ? "#015ac6" : "transparent",
-        color: active ? "#fff" : "#7c7c7c",
+        border: `1px solid ${borderColor}`,
+        backgroundColor: active ? "var(--c-accent)" : "transparent",
+        color: textColor,
         fontFamily: FONT,
         fontWeight: 700,
         fontSize: "14px",
@@ -63,6 +74,7 @@ function PageButton({
         justifyContent: "center",
         padding: 0,
         flexShrink: 0,
+        opacity: onClick ? 1 : 0.45,
       }}
     >
       {children}
@@ -74,6 +86,7 @@ export default function Pagination({ currentPage, totalPages }: Props) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const { isDark } = useDark();
 
   if (totalPages <= 1) return null;
 
@@ -100,17 +113,17 @@ export default function Pagination({ currentPage, totalPages }: Props) {
     >
       <PageButton
         ariaLabel="Previous page"
+        isDark={isDark}
         onClick={currentPage > 1 ? () => goToPage(currentPage - 1) : undefined}
       >
-        <span style={{ color: "#0046AE", opacity: 0.6 }}>
-          <ChevronIcon direction="left" />
-        </span>
+        <ChevronIcon direction="left" />
       </PageButton>
 
       {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
         <PageButton
           key={page}
           active={page === currentPage}
+          isDark={isDark}
           onClick={() => goToPage(page)}
           ariaLabel={`Page ${page}`}
         >
@@ -120,13 +133,12 @@ export default function Pagination({ currentPage, totalPages }: Props) {
 
       <PageButton
         ariaLabel="Next page"
+        isDark={isDark}
         onClick={
           currentPage < totalPages ? () => goToPage(currentPage + 1) : undefined
         }
       >
-        <span style={{ color: "#0046AE", opacity: 0.6 }}>
-          <ChevronIcon direction="right" />
-        </span>
+        <ChevronIcon direction="right" />
       </PageButton>
     </div>
   );

@@ -213,7 +213,7 @@ function NumberedDividerGrid({
   t,
   isDark,
   isMobile,
-  badgeColor = "#1c0a3d",
+  badgeColor,
 }: {
   count: number;
   translationPrefix: string;
@@ -226,6 +226,7 @@ function NumberedDividerGrid({
   const cellBg = isDark ? "#141414" : "#fff";
   const headingColor = isDark ? "#e0e0e0" : "#141414";
   const muted = isDark ? "#909090" : "#757575";
+  const resolvedBadgeColor = badgeColor ?? (isDark ? "#0148ae" : "#1c0a3d");
 
   return (
     <div
@@ -253,10 +254,10 @@ function NumberedDividerGrid({
         >
           <div
             style={{
-              width: "32px",
-              height: "32px",
+              width: "28px",
+              height: "28px",
               borderRadius: "8px",
-              backgroundColor: badgeColor,
+              backgroundColor: resolvedBadgeColor,
               opacity: 0.85,
               flexShrink: 0,
               display: "flex",
@@ -269,7 +270,7 @@ function NumberedDividerGrid({
                 color: "#fff",
                 fontFamily: FONT,
                 fontWeight: 700,
-                fontSize: "var(--fs-body-sm)",
+                fontSize: "var(--fs-caption)",
               }}
             >
               {i + 1}
