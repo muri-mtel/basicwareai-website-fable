@@ -36,7 +36,7 @@ const CARDS_EN: Card[] = [
   },
   {
     quote:
-      "Kotler Impact has entered into a strategic collaboration with ByteDance and Basicware AI to jointly launch AI FIRST — a transformative global initiative to deliver accessible, practical and high-value AI education to people of all ages, backgrounds and proficiency levels across the globe.",
+      "Kotler Impact, the organizer of the world-famous World Marketing Summit, has entered into a strategic collaboration with ByteDance, parent company of TikTok, and Basicware AI to jointly launch AI FIRST, a transformative global initiative. This program aims to deliver accessible, practical and high-value artificial intelligence education to people of all ages, backgrounds and proficiency levels across the globe.\nBacked by cutting-edge AI technological innovations and profound expertise in digital learning, AI FIRST breaks down the barriers between sophisticated technology and inclusive education. Integrating world-class educational content, immersive AI-enabled learning experiences and structured upskilling frameworks, the initiative empowers individuals, enterprises, academic institutions and government bodies with professional knowledge and practical tools to flourish in an AI-powered economy. Built for universal accessibility, it caters to all types of learners, including students, young professionals, educators, corporate executives, public servants and the general public.",
     author: "Kotler Impact",
     role: "Asia",
     flag: "🌏",
@@ -49,7 +49,7 @@ const CARDS_EN: Card[] = [
   },
   {
     quote:
-      "We provide end-to-end services for enterprises to build exclusive AI digital employee avatars for over 50 core staff members. Through full-cycle data monitoring and AI intelligent analytics, we accurately assess employees' adaptability to the AI era, delivering actionable decision-making support for large-scale AI rollouts.",
+      "We provide end-to-end services for enterprises to build exclusive AI digital employee avatars for over 50 core staff members. We help corporate employees quickly create custom AI digital avatars tailored to their job responsibilities to boost efficiency across all work scenarios. Meanwhile, through full-cycle data monitoring and AI intelligent analytics, we accurately assess employees’ adaptability to the AI era, delivering actionable decision-making support for enterprises’ subsequent large-scale AI rollouts, talent management and digital transformation. We also offer practical implementation solutions that cut costs, raise productivity and enable stable 24/7 business operations for enterprises.",
     author: "Local State-owned Enterprise",
     role: "Mainland China",
     flag: "🇨🇳",
@@ -78,7 +78,7 @@ const CARDS_ZH: Card[] = [
   },
   {
     quote:
-      "享誉全球的世界营销峰会主办机构 Kotler Impact 集团与 TikTok 母公司字节跳动、Basicware AI 达成战略合作，共同推出全球变革性项目「AI 先行计划（AI FIRST）」，旨在让全球不同年龄、不同背景、不同专业水平的人群都能接触到实用、高价值的人工智能教育。",
+      "享誉全球的世界营销峰会主办机构Kotler Impact集团与TikTok母公司字节跳动、Basicware AI达成战略合作，共同推出全球变革性项目「AI 先行计划（AI FIRST）」。该项目旨在让全球不同年龄、不同背景、不同专业水平的人群都能接触到实用、高价值的人工智能教育。\n依托前沿人工智能技术创新与深厚数字化教学专业积淀，「AI 先行计划」打通高端科技与普惠教育之间的壁垒。项目整合世界级教学内容、沉浸式人工智能学习体验与系统化技能提升路径，为个人、企业、院校及政府机构赋能，提供立足人工智能驱动型经济所需的专业知识与实操工具。项目面向全人群打造，覆盖各类学习者群体，包含在校学生、青年职场人、教育工作者、企业管理者、公职人员以及普通大众。",
     author: "Kotler Impact",
     role: "亚洲",
     flag: "🌏",
@@ -91,7 +91,7 @@ const CARDS_ZH: Card[] = [
   },
   {
     quote:
-      "为企业 50 余名核心人员提供专属 AI 数字员工分身搭建的全流程服务。帮助企业员工快速搭建适配自身工作的专属 AI 数字分身，实现全场景工作提效；同时通过全周期数据监测与 AI 智能分析，精准评估企业员工适配 AI 时代的能力，为后续规模化 AI 部署提供可落地的决策依据。",
+      "为企业提供50余名核心人员提供专属AI数字员工分身搭建的全流程服务。帮助企业员工快速搭建适配自身工作的专属 AI 数字分身，实现全场景工作提效；同时通过全周期数据监测与 AI 智能分析，精准评估企业员工适配 AI 时代的能力，为企业后续规模化 AI 部署、人才管理及数字化转型提供可落地的决策依据。切实为企业提供降本增效与“7/24”稳定工作运营落地方案。",
     author: "国有烟草企业",
     role: "中国大陆",
     flag: "🇨🇳",
@@ -120,7 +120,7 @@ const CARDS_ZH_TW: Card[] = [
   },
   {
     quote:
-      "享譽全球的世界營銷峰會主辦機構 Kotler Impact 集團與 TikTok 母公司字節跳動、Basicware AI 達成戰略合作，共同推出全球變革性項目「AI 先行計劃（AI FIRST）」，旨在讓全球不同年齡、不同背景、不同專業水平的人群都能接觸到實用、高價值的人工智能教育。",
+      "享譽全球的世界營銷峯會主辦機構Kotler Impact集團與TikTok母公司字節跳動、Basicware AI達成戰略合作，共同推出全球變革性項目「AI 先行計劃（AI FIRST）」。該項目旨在讓全球不同年齡、不同背景、不同專業水平的人羣都能接觸到實用、高價值的人工智能教育。\n依託前沿人工智能技術創新與深厚數字化教學專業積澱，「AI 先行計劃」打通高端科技與普惠教育之間的壁壘。項目整合世界級教學內容、沉浸式人工智能學習體驗與系統化技能提升路徑，爲個人、企業、院校及政府機構賦能，提供立足人工智能驅動型經濟所需的專業知識與實操工具。項目面向全人羣打造，覆蓋各類學習者羣體，包含在校學生、青年職場人、教育工作者、企業管理者、公職人員以及普通大衆。",
     author: "Kotler Impact",
     role: "亞洲",
     flag: "🌏",
@@ -133,7 +133,7 @@ const CARDS_ZH_TW: Card[] = [
   },
   {
     quote:
-      "為企業 50 餘名核心人員提供專屬 AI 數字員工分身搭建的全流程服務。幫助企業員工快速搭建適配自身工作的專屬 AI 數字分身，實現全場景工作提效；同時通過全週期數據監測與 AI 智能分析，精準評估企業員工適配 AI 時代的能力，為後續規模化 AI 部署提供可落地的決策依據。",
+      "爲企業提供50餘名核心人員提供專屬AI數字員工分身搭建的全流程服務。幫助企業員工快速搭建適配自身工作的專屬 AI 數字分身，實現全場景工作提效；同時通過全週期數據監測與 AI 智能分析，精準評估企業員工適配 AI 時代的能力，爲企業後續規模化 AI 部署、人才管理及數字化轉型提供可落地的決策依據。切實爲企業提供降本增效與“7/24”穩定工作運營落地方案。",
     author: "國有煙草企業",
     role: "中國大陸",
     flag: "🇨🇳",
