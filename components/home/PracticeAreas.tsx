@@ -14,10 +14,16 @@ const IMAGES = [
   "/assets/2_practice_02.avif",
   "/assets/2_practice_03.avif",
   "/assets/2_practice_04.avif",
+  "/assets/2_practice_05.avif",
 ];
 
 // Matches the order of the `grid` array in translations
-const PRODUCT_IDS: (string | null)[] = ["token", "content", "education", "employees"];
+const PRODUCT_IDS: (string | null)[] = ["token", "content", "education", "employees", "multicloud"];
+
+type PracticeGridItem = {
+  title: string;
+  tagline: string;
+};
 
 // Renders as a Link when href is provided, otherwise as a plain div
 function CardWrapper({
@@ -43,7 +49,6 @@ function CardWrapper({
 
 const CARD_H = 144;
 const CARD_GAP = 18;
-const LIST_H = IMAGES.length * CARD_H + (IMAGES.length - 1) * CARD_GAP;
 const COMPACT_DESKTOP_MIN = 1280;
 const COMPACT_DESKTOP_MAX = 1600;
 
@@ -56,6 +61,9 @@ export default function PracticeAreas() {
   const t = useTranslations("practice");
   const locale = useLocale();
   const titleLine2 = t("titleLine2");
+  const grid = t.raw("grid") as PracticeGridItem[];
+  const listH = grid.length * CARD_H + Math.max(0, grid.length - 1) * CARD_GAP;
+  const hasExtendedGrid = grid.length > IMAGES.length - 1;
   // Keep the first client render aligned with SSR, then switch once after
   // mount. Staying non-reactive on resize avoids the GSAP pin/removeChild
   // crash this section hit when React swapped layouts mid-scroll.
@@ -76,20 +84,20 @@ export default function PracticeAreas() {
 
     // 1280–1600px (e.g. 1440 design width): show all cards, no scroll-through pin
     if (isCompactDesktopWidth(window.innerWidth)) {
-      const wrapH = listWrapperRef.current?.offsetHeight ?? LIST_H;
+      const wrapH = listWrapperRef.current?.offsetHeight ?? listH;
       if (listRef.current) {
-        listRef.current.style.marginTop = `${Math.max(0, (wrapH - LIST_H) / 2)}px`;
+        listRef.current.style.marginTop = `${Math.max(0, (wrapH - listH) / 2)}px`;
       }
       return;
     }
 
     const wrapH      = listWrapperRef.current?.offsetHeight ?? 0;
-    const scrollDist = LIST_H - wrapH;
+    const scrollDist = listH - wrapH;
 
     if (scrollDist <= 0) {
       if (containerRef.current) containerRef.current.style.height = "100vh";
       if (listRef.current) {
-        listRef.current.style.marginTop = `${Math.max(0, (wrapH - LIST_H) / 2)}px`;
+        listRef.current.style.marginTop = `${Math.max(0, (wrapH - listH) / 2)}px`;
       }
       return;
     }
@@ -110,7 +118,7 @@ export default function PracticeAreas() {
     }, containerRef);
 
     return () => ctx.revert();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [listH]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (isMobile) {
     return (
@@ -195,7 +203,7 @@ export default function PracticeAreas() {
 
           {/* Cards stacked */}
           <div style={{ display: "flex", flexDirection: "column", gap: `${CARD_GAP}px` }}>
-            {IMAGES.map((src, i) => (
+            {grid.map((item, i) => (
               <CardWrapper
                 key={i}
                 href={PRODUCT_IDS[i] ? `/${locale}/solutions/${PRODUCT_IDS[i]}` : null}
@@ -213,7 +221,7 @@ export default function PracticeAreas() {
               >
                 <div style={{ width: "100px", height: `${CARD_H}px`, flexShrink: 0, overflow: "hidden" }}>
                   <img
-                    src={src}
+                    src={IMAGES[i] ?? IMAGES[IMAGES.length - 1]}
                     alt=""
                     style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", pointerEvents: "none" }}
                   />
@@ -229,7 +237,7 @@ export default function PracticeAreas() {
                       color: "#141414",
                     }}
                   >
-                    {t(`grid.${i}.title`)}
+                    {item.title}
                   </p>
                   <p
                     style={{
@@ -241,7 +249,7 @@ export default function PracticeAreas() {
                       color: "#141414",
                     }}
                   >
-                    {t(`grid.${i}.tagline`)}
+                    {item.tagline}
                   </p>
                 </div>
               </CardWrapper>
@@ -253,7 +261,11 @@ export default function PracticeAreas() {
   }
 
   return (
-    <div ref={containerRef} className="practice-areas-section">
+    <div
+      ref={containerRef}
+      className="practice-areas-section"
+      style={hasExtendedGrid ? { height: "350vh" } : undefined}
+    >
       <div
         ref={pinnedRef}
         style={{
@@ -368,6 +380,7 @@ export default function PracticeAreas() {
                 flex: 1,
                 minWidth: 0,
                 maxWidth: "680px",
+                height: hasExtendedGrid ? "50vh" : undefined,
                 position: "relative",
                 overflow: "hidden",
               }}
@@ -381,7 +394,7 @@ export default function PracticeAreas() {
                   willChange: "transform",
                 }}
               >
-                {IMAGES.map((src, i) => (
+                {grid.map((item, i) => (
                   <CardWrapper
                     key={i}
                     href={PRODUCT_IDS[i] ? `/${locale}/solutions/${PRODUCT_IDS[i]}` : null}
@@ -404,7 +417,7 @@ export default function PracticeAreas() {
                   >
                     <div style={{ width: "143px", height: `${CARD_H}px`, flexShrink: 0, overflow: "hidden" }}>
                       <img
-                        src={src}
+                        src={IMAGES[i] ?? IMAGES[IMAGES.length - 1]}
                         alt=""
                         style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", pointerEvents: "none" }}
                       />
@@ -430,7 +443,7 @@ export default function PracticeAreas() {
                           color: "#141414",
                         }}
                       >
-                        {t(`grid.${i}.title`)}
+                        {item.title}
                       </p>
                       <p
                         className="practice-areas-card-tagline"
@@ -443,7 +456,7 @@ export default function PracticeAreas() {
                           color: "#141414",
                         }}
                       >
-                        {t(`grid.${i}.tagline`)}
+                        {item.tagline}
                       </p>
                     </div>
                   </CardWrapper>
