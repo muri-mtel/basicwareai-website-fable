@@ -45,10 +45,10 @@
     "partnerBody3": "3HK and Basicware AI have formed a strategic alliance, leading Hong Kong's telecommunications industry into a new era of AI Token. Via the BasicRouter platform, users can access over 60 mainstream global Large Language Models (LLMs) on demand and experience the tangible commercial value of collaborative AI multi-model operations. Featuring zero risk and no upfront payment, the platform enables simple, stable and secure access to global AI computing power."
   },
   "practice": {
-    "eyebrow": "· Practice areas ·",
-    "titleLine1": "What we can",
-    "titleLine2": "build together.",
-    "subtitle": "Four practice areas. One approach. Sit beside the team, understand the goal, and build until the outcome lands.",
+    "eyebrow": "· AI Solutions ·",
+    "titleLine1": "AI Solutions",
+    "titleLine2": "",
+    "subtitle": "What we help enterprises build.",
     "cta": "View solutions",
     "learnMore": "Learn more",
     "readMore": "Read More",
@@ -145,7 +145,7 @@
     "stat4Label": "Operational Efficiency",
     "ctaEyebrow": "NEXT",
     "ctaTitle": "Want results like these?",
-    "ctaButton": "Talk to us"
+    "ctaButton": "talk to us"
   },
   "contact": {
     "eyebrow": "· Get in touch ·",
@@ -175,21 +175,21 @@
     "line2": "for your business"
   },
   "solutionsPage": {
-    "headingBefore": "Five ways",
-    "headingEm": "we help",
+    "headingBefore": "Five ways we help",
+    "headingEm": "",
     "learnMore": "Learn more →",
     "resultsHeadingBefore": "The results",
     "resultsHeadingEm": "speak",
-    "ctaTitleBefore": "Let's find your fastest path to",
-    "ctaTitleEm": "AI growth",
+    "ctaTitleBefore": "Let's find your fastest path to AI growth",
+    "ctaTitleEm": "",
     "solutions": [
       {
         "id": "token",
         "title": "Centralized Token Control",
         "shortDesc": "One gateway to the world's top AI models. Connect once, switch freely, scale without limits.",
-        "longDesc": "It aggregates mainstream domestic and overseas large language models including GPT, Gemini, Doubao, Qwen, Claude and DeepSeek in one stop. As one of the first overseas enterprises licensed for Seedance 2.0, we deliver enterprise-grade security, real-time cost analytics and flexible multi-cloud billing solutions, significantly cutting enterprises' expenses on multi-model integration, procurement and operation & maintenance.",
-        "testimonialQuote": "\"Basicware's AI solutions transformed our business. Their team's expertise and cutting-edge technology helped us achieve unprecedented growth and efficiency.\"",
-        "testimonialAuthor": "— Anya Sharma, CEO of StellarTech",
+        "longDesc": "It aggregates mainstream domestic and overseas large language models including GPT, Gemini, Doubao, Qwen, Claude and DeepSeek in one stop. As one of the first overseas enterprises licensed for Seedance 2.0, we deliver enterprise-grade security, real-time cost analytics and flexible multi-cloud billing solutions, significantly cutting enterprises’ expenses on multi-model integration, procurement and operation & maintenance.",
+        "testimonialQuote": "“Basicware's AI solutions transformed our business. Their team's expertise and cutting-edge technology helped us achieve unprecedented growth and efficiency.”",
+        "testimonialAuthor": "— Anya Sharma, CEO, StellarTech",
         "bulletsTitle": "What you get:",
         "bullets": [
           "One API, instant access to 10+ leading global AI models",
@@ -202,11 +202,11 @@
       },
       {
         "id": "employees",
-        "title": "AI Digital Employees",
+        "title": "AI (OpenClaw) Enterprise-Grade AI Digital Employee",
         "shortDesc": "Your teams spend too much time on tasks that don't need a human. OpenClaw deploys AI digital employees that operate around the clock.",
         "longDesc": "Built for enterprises, this large-scale AI collaborative system supports one-click deployment of AI work nodes and is compatible with various collaboration platforms including Lark, WhatsApp and WeChat. Equipped with enterprise-level permission control, API key management and cost monitoring functions, it can generate digital employees for multiple roles such as marketing, customer service, sales, R&D, operation & maintenance and knowledge management. It enables 24/7 automated office operations and improves organizational collaboration efficiency.",
-        "testimonialQuote": "\"OpenClaw's AI agents handled our customer support overnight. Response time dropped from hours to seconds, and satisfaction scores climbed 85%.\"",
-        "testimonialAuthor": "— Operations Lead, Gaming Co.",
+        "testimonialQuote": "“OpenClaw's AI agents handled our customer support overnight. Response time dropped from hours to seconds, and satisfaction scores climbed 85%.”",
+        "testimonialAuthor": "— Jerry, Director, My Dream Education Centre",
         "bulletsTitle": "Roles available:",
         "bullets": [
           "Brand Marketing — content scheduling, social media monitoring, campaign reporting",
@@ -221,8 +221,8 @@
         "id": "content",
         "title": "AI Content & Growth",
         "shortDesc": "Marketing teams are under pressure to produce more — faster, in more formats, across more channels than ever.",
-        "longDesc": "We maintain deep integration with ByteDance's Douyin, TikTok and VolcEngine. Powered by AIGC technology, we mass-produce marketing assets including copywriting, images, short videos and virtual live streamers. Intelligent data algorithms enable targeted ad placement, user insight analysis and private domain operations, helping brands, e-commerce merchants and cross-border businesses cut costs, boost efficiency and lift GMV.",
-        "testimonialQuote": "\"Our TikTok account went from 3,000 to 63,200 followers in a single month. 40x growth we couldn't have achieved without Basicware.\"",
+        "longDesc": "We maintain deep integration with ByteDance’s Douyin, TikTok and VolcEngine. Powered by AIGC technology, we mass-produce marketing assets including copywriting, images, short videos and virtual live streamers. Intelligent data algorithms enable targeted ad placement, user insight analysis and private domain operations, helping brands, e-commerce merchants and cross-border businesses cut costs, boost efficiency and lift GMV.\nWe restructure corporate marketing systems via full-stack AI capabilities, covering four core stages: strategy planning, content creation, ad delivery and daily operations.",
+        "testimonialQuote": "“Our TikTok account went from 3,000 to 63,200 followers in a single month. 40x growth we could not have achieved without Basicware.”",
         "testimonialAuthor": "— Marketing Director, Hospitality Brand",
         "bulletsTitle": "What we deliver:",
         "bullets": [
@@ -239,14 +239,15 @@
         "title": "AI Education",
         "shortDesc": "AI adoption fails when teams don't know how to use it. We help organizations close that gap.",
         "longDesc": "Build an AI talent cultivation system covering the Asia-Pacific region. We have launched an authoritative AI certification system in partnership with BytePlus (ByteDance) and Pearson. Cooperating with universities and local governments in Hong Kong, Macao and Southeast Asia, we provide online and offline training programs to build standardized pathways for AI talent development and continuously supply skilled professionals to the industry.",
-        "testimonialQuote": "\"The certification gave our team a competitive edge. Recognized across the region and valued by every enterprise client we approached.\"",
+        "testimonialQuote": "“The certification gave our team a competitive edge. Recognized across the region and valued by every enterprise client we approached.”",
         "testimonialAuthor": "— Head of Training, University Partner",
         "bulletsTitle": "What's included:",
         "bullets": [
           "Online courses — AI skill training accessible to teams across geographies",
           "Offline courses & assessments — in-person instruction delivered through regional partnerships",
           "AI Engineer Certification — co-certified by TikTok and Pearson, recognized by governments and enterprises across the region",
-          "Issued exclusively in joint cooperation with top-tier platforms and globally authoritative institutions, the certification carries high industry value"
+          "Issued exclusively in joint cooperation with top-tier platforms and globally authoritative institutions, the certification carries high industry value",
+          "The certification gave our team a competitive edge. Recognized across the region and valued by every enterprise client we approached."
         ],
         "ctaLabel": "Read more"
       },
@@ -257,19 +258,34 @@
         "longDesc": "We integrate resources from five major global cloud vendors including Alibaba Cloud, Tencent Cloud, AWS and Huawei Cloud to build a stable and elastic unified computing infrastructure, delivering highly reliable computing power to all types of AI applications.",
         "testimonialQuote": "",
         "testimonialAuthor": "",
-        "bulletsTitle": "Core Advantages:",
+        "bulletsTitle": "Core Advantages：",
         "bullets": [
           "Aggregate mainstream global cloud ecosystems with full resource coverage and flexible scheduling",
           "Multi-cloud redundant architecture ensures stable operation and high availability",
-          "Unified operation and management drastically cut enterprises' costs on computing resource procurement and maintenance"
+          "Unified operation and management drastically cut enterprises’ costs on computing resource procurement and maintenance"
         ],
         "ctaLabel": "Get in touch"
       }
     ],
     "results": [
-      { "target": 40, "prefix": "", "suffix": "x", "label": "audience growth for a hospitality brand" },
-      { "target": 4, "prefix": "$", "suffix": "M", "label": "in new revenue for a gaming company" },
-      { "target": 300, "prefix": "", "suffix": "%", "label": "increased operational efficiency across industries" }
+      {
+        "target": 40,
+        "prefix": "",
+        "suffix": "x",
+        "label": "audience growth for a hospitality brand"
+      },
+      {
+        "target": 4,
+        "prefix": "$",
+        "suffix": "M",
+        "label": "in new revenue for a gaming company"
+      },
+      {
+        "target": 300,
+        "prefix": "",
+        "suffix": "%",
+        "label": "increased operational efficiency across industries"
+      }
     ]
   },
   "successStoriesDetail": {
@@ -277,16 +293,34 @@
     "solutionHeading": "The Solution",
     "resultsHeading": "Key Results",
     "metrics": [
-      { "value": "40×", "label": "Audience growth" },
-      { "value": "63,200", "label": "New followers" },
-      { "value": "85%", "label": "Less production time" }
+      {
+        "value": "40×",
+        "label": "Audience growth"
+      },
+      {
+        "value": "63,200",
+        "label": "New followers"
+      },
+      {
+        "value": "85%",
+        "label": "Less production time"
+      }
     ],
     "challengeBody": "The client was struggling to scale their digital presence in a competitive, multi-language market. Their content team was spending the majority of their time on low-impact production tasks, leaving little bandwidth for strategy. Existing tools were siloed, requiring manual handoffs between six different platforms and generating inconsistent brand output.",
     "solutionBody": "Basicware deployed a unified AI content and distribution platform, tailored to the client's brand voice and market. Our proprietary model blend handled ideation, creation, and channel optimisation simultaneously — across 12 languages and 6 platforms — with a human-in-the-loop review layer that kept editorial quality high without slowing output.",
     "results": [
-      { "title": "40× audience growth", "body": "Achieved in a single month through AI-optimised cross-channel publishing and real-time engagement scoring." },
-      { "title": "63,200 new followers", "body": "Organic acquisition across all platforms, driven by algorithmically timed, language-localised content bursts." },
-      { "title": "85% faster production", "body": "Content turnaround dropped from 4 days to under 8 hours, freeing the team to focus on brand strategy." }
+      {
+        "title": "40× audience growth",
+        "body": "Achieved in a single month through AI-optimised cross-channel publishing and real-time engagement scoring."
+      },
+      {
+        "title": "63,200 new followers",
+        "body": "Organic acquisition across all platforms, driven by algorithmically timed, language-localised content bursts."
+      },
+      {
+        "title": "85% faster production",
+        "body": "Content turnaround dropped from 4 days to under 8 hours, freeing the team to focus on brand strategy."
+      }
     ]
   },
   "productDetail": {
@@ -315,7 +349,10 @@
     "line1": "Fresh from the field."
   },
   "homeNews": {
-    "viewAll": "View all"
+    "viewAll": "View all",
+    "sectionEyebrow": "News & Press Release",
+    "sectionTitleLine1": "The latest from",
+    "sectionTitleAccent": "Basicware"
   },
   "newsPage": {
     "sectionTitleLine1": "The latest from",
@@ -324,7 +361,7 @@
     "sectionBody": "Updates, partnerships, and field notes from Basicware's work across AI, cloud, and enterprise transformation."
   },
   "pressRelease3hk": {
-    "officialHeading": "Official release",
+    "officialHeading": "Source",
     "officialLink": "View on Hutchison Telecom Hong Kong (English)"
   },
   "about": {
@@ -447,7 +484,7 @@
         },
         {
           "name": "Richard Liu",
-          "title": "AI Large Model Specialist",
+          "title": "AI Large Language Model Specialist",
           "bio": "AI and Machine Learning Specialist with 14 years of overseas academic and industrial experience, with research focus covering NLP, Reinforcement Learning, large model application and commercialization. Led cross-domain AI projects at leading tech giants including Meituan, Kuaishou and Ant Group, generating over RMB 1 billion in cumulative revenue and boosting DAU to over 10 million. Built and managed a dozens-strong algorithm team from scratch. Published 8 papers in top international conferences (including AAMAS, ICONIP), received 2 Springer PRIMA Best Paper Nominations, and holds 13 granted invention patents."
         }
       ]

@@ -54,5 +54,5 @@ Locale,zh-tw,Entire site,Local dev server responds on `/zh-tw`.,Traditional Chin
 Locale,zh-tw,Local route availability,-,The audit should distinguish between deployed 404 behavior and current local route availability.,-,
 Implementation,Hero casing,titlePart1,-,Ai vs AI in Chinese hero,AI 赋能,
 Implementation,zh.json script mix,about.values.title,-,Traditional chars in Simplified file,什么驱动着我们,
-Implementation,Team title,Richard Liu job title,-,AI Large Model Specialist,首席技术顾问,
+Implementation,Team title,Richard Liu job title,-,AI Large Language Model Specialist,大语言模型 AI 专家,大型語言模型 AI 專家
 Implementation,zh.json script mix,about.values.title,-,Simplified Chinese file should use Simplified script for the values title.,什么驱动着我们,

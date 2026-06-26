@@ -368,7 +368,7 @@ export default function Navbar() {
             WebkitBackdropFilter: "blur(20px)",
             transform: menuOpen ? "translateX(0)" : "translateX(100%)",
             transition: "transform 0.35s cubic-bezier(0.22,1,0.36,1)",
-            display: "flex",
+            display: menuOpen ? "flex" : "none",
             flexDirection: "column",
             padding: "80px 32px 48px",
             gap: "0",

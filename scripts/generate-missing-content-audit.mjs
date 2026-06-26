@@ -590,7 +590,7 @@ function buildEvidenceMap() {
         `EN: ${EN_MESSAGES.about.team.members[4].title}`,
         `ZH: ${ZH_MESSAGES.about.team.members[4].title}`,
       ],
-      codeNote: "English uses `AI Large Model Specialist`, while both Chinese locale files currently use `首席技术顾问 / 首席技術顧問`.",
+      codeNote: "Richard Liu title now aligns across English, Simplified Chinese, and Traditional Chinese locale files.",
     },
   };
 }

@@ -6,6 +6,7 @@ import gsap from "gsap";
 import Breadcrumb from "@/components/Breadcrumb";
 import { type CaseStudy } from "@/lib/case-studies";
 import { useDark } from "@/components/ThemeProvider";
+import { useBreakpoint } from "@/hooks/useBreakpoint";
 import { consumeHeroTransition } from "@/lib/heroTransition";
 import { getContentLocaleKey, mergeWithEnglishFallback } from "@/lib/locale";
 
@@ -31,19 +32,21 @@ export default function CaseStudyDetailPage({
   locale: string;
 }) {
   const { isDark } = useDark();
+  const { isMobile } = useBreakpoint();
   const t = useTranslations("nav");
   const tb = useTranslations("breadcrumb");
   const td = useTranslations("successStoriesDetail");
   const heroRef = useRef<HTMLDivElement>(null);
   const localeKey = getContentLocaleKey(locale);
-  const metrics = td.raw("metrics") as MetricCopy[];
-  const results = td.raw("results") as ResultCopy[];
   const copy =
     localeKey === "zh"
       ? mergeWithEnglishFallback(study.en, study.zh)
       : localeKey === "zhTw"
         ? mergeWithEnglishFallback(study.en, study.zhTw)
         : study.en;
+  const detail = copy.detail;
+  const metrics = detail?.metrics ?? (td.raw("metrics") as MetricCopy[]);
+  const results = detail?.results ?? (td.raw("results") as ResultCopy[]);
 
   useLayoutEffect(() => {
     const pending = consumeHeroTransition();
@@ -168,6 +171,7 @@ export default function CaseStudyDetailPage({
         <div
           style={{
             display: "flex",
+            flexDirection: isMobile ? "column" : "row",
             gap: "2px",
             marginBottom: "64px",
             borderRadius: "16px",
@@ -185,12 +189,13 @@ export default function CaseStudyDetailPage({
                 display: "flex",
                 flexDirection: "column",
                 gap: "8px",
+                minWidth: 0,
               }}
             >
               <p style={{ margin: 0, fontFamily: FONT, fontWeight: 700, fontSize: "var(--fs-heading-lg)", color: headline, letterSpacing: "-0.5px", lineHeight: 1 }}>
                 {value}
               </p>
-              <p style={{ margin: 0, fontFamily: FONT, fontWeight: 500, fontSize: "var(--fs-body-sm)", color: muted, lineHeight: 1.4 }}>
+              <p style={{ margin: 0, fontFamily: FONT, fontWeight: 500, fontSize: "var(--fs-body-sm)", color: muted, lineHeight: 1.4, overflowWrap: "anywhere" }}>
                 {label}
               </p>
             </div>
@@ -198,7 +203,7 @@ export default function CaseStudyDetailPage({
         </div>
 
         {/* Two-column body */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "48px 80px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: "48px 80px" }}>
 
           {/* Challenge */}
           <section>
@@ -206,7 +211,7 @@ export default function CaseStudyDetailPage({
               {td("challengeHeading")}
             </p>
             <p style={{ margin: 0, fontFamily: FONT, fontWeight: 500, fontSize: "var(--fs-body-lg)", lineHeight: 1.75, color: text }}>
-              {td("challengeBody")}
+              {detail?.challengeBody ?? td("challengeBody")}
             </p>
           </section>
 
@@ -216,7 +221,7 @@ export default function CaseStudyDetailPage({
               {td("solutionHeading")}
             </p>
             <p style={{ margin: 0, fontFamily: FONT, fontWeight: 500, fontSize: "var(--fs-body-lg)", lineHeight: 1.75, color: text }}>
-              {td("solutionBody")}
+              {detail?.solutionBody ?? td("solutionBody")}
             </p>
           </section>
         </div>
@@ -229,7 +234,7 @@ export default function CaseStudyDetailPage({
           <p style={{ margin: "0 0 32px", fontFamily: FONT, fontWeight: 700, fontSize: "var(--fs-heading-md)", color: text }}>
             {td("resultsHeading")}
           </p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)", gap: "24px" }}>
             {results.map(({ title, body }, i) => (
               <div
                 key={i}
@@ -241,11 +246,12 @@ export default function CaseStudyDetailPage({
                   display: "flex",
                   flexDirection: "column",
                   gap: "12px",
+                  minWidth: 0,
                 }}
               >
                 <span style={{ fontSize: "28px" }}>{RESULT_ICONS[i]}</span>
-                <p style={{ margin: 0, fontFamily: FONT, fontWeight: 700, fontSize: "var(--fs-body)", color: text, letterSpacing: "-0.2px" }}>{title}</p>
-                <p style={{ margin: 0, fontFamily: FONT, fontWeight: 500, fontSize: "var(--fs-body)", lineHeight: 1.65, color: muted }}>{body}</p>
+                <p style={{ margin: 0, fontFamily: FONT, fontWeight: 700, fontSize: "var(--fs-body)", color: text, letterSpacing: "-0.2px", overflowWrap: "anywhere" }}>{title}</p>
+                <p style={{ margin: 0, fontFamily: FONT, fontWeight: 500, fontSize: "var(--fs-body)", lineHeight: 1.65, color: muted, overflowWrap: "anywhere" }}>{body}</p>
               </div>
             ))}
           </div>

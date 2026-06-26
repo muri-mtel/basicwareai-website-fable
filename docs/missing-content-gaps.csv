@@ -46,4 +46,4 @@ ID,Page,Section,Field,What's needed,EN in client CSV,ZH in client CSV,ZH-TW in c
 15,Homepage,Outcomes carousel,Snippet 3,Local State-owned Tobacco short story,Yes,Yes,Yes,No,Medium,Wire homepage carousel to CSV snippets 2–3,
 16,Implementation,Hero casing,titlePart1,Ai vs AI in Chinese hero,Yes,Yes,Yes,Partial,Low,Normalize to AI if client wants exact CSV match,Semantic match; literal casing differs
 17,Implementation,zh.json script mix,about.values.title,Traditional chars in Simplified file,No,No,No,N/A,Low,Fix to Simplified Chinese,什麼驅動著我們 should be 什么驱动着我们
-18,Implementation,Team title,Richard Liu job title,Chief AI Large Model Specialist vs 首席技术顾问,Yes,Yes,Yes,Partial,Low,Align with CSV,Deployed EN uses AI Large Model Specialist; local zh differs
+18,Implementation,Team title,Richard Liu job title,AI Large Language Model Specialist aligned across locales,Yes,Yes,Yes,Yes,Low,No action needed,Updated EN/ZH/ZH-TW job titles

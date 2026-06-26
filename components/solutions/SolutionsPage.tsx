@@ -208,7 +208,8 @@ export default function SolutionsPage() {
                 textAlign: "center",
               }}
             >
-              {t("headingBefore")} <em>{t("headingEm")}</em>
+              {t("headingBefore")}
+              {t("headingEm") ? <> <em>{t("headingEm")}</em></> : null}
             </h2>
 
             {/* Pill tab nav (desktop) / dropdown (mobile) */}
@@ -537,7 +538,8 @@ export default function SolutionsPage() {
           <div style={{ display: "flex", flexDirection: "column", gap: 8, width: "100%" }}>
             <p className="bw-eyebrow" style={{ color: "#ffab1b", justifyContent: "center" }}>{tStories("ctaEyebrow")}</p>
             <h2 className="bw-display" style={{ fontWeight: 600, fontSize: "var(--fs-heading-xl)", color: isDark ? "#e8e8e8" : "#141414" }}>
-              {t("ctaTitleBefore")} <em style={{ color: "inherit" }}>{t("ctaTitleEm")}</em>
+              {t("ctaTitleBefore")}
+              {t("ctaTitleEm") ? <> <em style={{ color: "inherit" }}>{t("ctaTitleEm")}</em></> : null}
             </h2>
           </div>
           <Link href={`/${locale}/contact`} className="bw-btn" style={{ display: "flex", alignItems: "center", gap: 10, backgroundColor: "#141414", borderRadius: 40, padding: "16px 32px", textDecoration: "none", color: "#fff", fontFamily: FONT, fontWeight: 500, fontSize: "var(--fs-body-sm)", letterSpacing: "-0.154px", whiteSpace: "nowrap" }}>

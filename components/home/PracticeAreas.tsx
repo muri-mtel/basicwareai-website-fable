@@ -55,6 +55,7 @@ function isCompactDesktopWidth(width: number) {
 export default function PracticeAreas() {
   const t = useTranslations("practice");
   const locale = useLocale();
+  const titleLine2 = t("titleLine2");
   // Keep the first client render aligned with SSR, then switch once after
   // mount. Staying non-reactive on resize avoids the GSAP pin/removeChild
   // crash this section hit when React swapped layouts mid-scroll.
@@ -146,8 +147,27 @@ export default function PracticeAreas() {
               className="bw-display"
               style={{ fontSize: "var(--fs-heading-lg)", color: "#f9f9f9" }}
             >
-              {t("titleLine1")}<br /><em style={{ color: "#aaddff" }}>{t("titleLine2")}</em>
+              {t("titleLine1")}
+              {titleLine2 ? (
+                <>
+                  <br />
+                  <em style={{ color: "#aaddff" }}>{titleLine2}</em>
+                </>
+              ) : null}
             </h2>
+            <p
+              style={{
+                margin: 0,
+                maxWidth: "460px",
+                color: "rgba(249,249,249,0.88)",
+                fontFamily: '"Plus Jakarta Sans", sans-serif',
+                fontWeight: 500,
+                fontSize: "var(--fs-body)",
+                lineHeight: 1.45,
+              }}
+            >
+              {t("subtitle")}
+            </p>
             <Link
               href={`/${locale}/solutions`}
               className="bw-btn"
@@ -294,8 +314,27 @@ export default function PracticeAreas() {
                 className="bw-display"
                 style={{ fontSize: "var(--fs-heading-lg)", color: "#f9f9f9" }}
               >
-                {t("titleLine1")}<br /><em style={{ color: "#aaddff" }}>{t("titleLine2")}</em>
+                {t("titleLine1")}
+                {titleLine2 ? (
+                  <>
+                    <br />
+                    <em style={{ color: "#aaddff" }}>{titleLine2}</em>
+                  </>
+                ) : null}
               </h2>
+              <p
+                style={{
+                  margin: 0,
+                  maxWidth: "460px",
+                  color: "rgba(249,249,249,0.88)",
+                  fontFamily: '"Plus Jakarta Sans", sans-serif',
+                  fontWeight: 500,
+                  fontSize: "var(--fs-body)",
+                  lineHeight: 1.45,
+                }}
+              >
+                {t("subtitle")}
+              </p>
               <Link
                 href={`/${locale}/solutions`}
                 className="bw-btn"

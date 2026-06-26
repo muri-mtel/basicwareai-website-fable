@@ -24,22 +24,21 @@ const ENTER_STAGGER = 0.1;
 const ENTER_OFFSET = 12;
 
 function SectionHeading({ locale, isDark }: { locale: string; isDark: boolean }) {
-  const tNews = useTranslations("newsPage");
   const tHome = useTranslations("homeNews");
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
       <p data-news-home-enter className="bw-eyebrow">
-        {tNews("sectionEyebrow")}
+        {tHome("sectionEyebrow")}
       </p>
       <h2
         data-news-home-enter
         className="bw-display"
         style={{ margin: 0, fontSize: "var(--fs-heading-lg)", textWrap: "balance" }}
       >
-        {tNews("sectionTitleLine1")}
+        {tHome("sectionTitleLine1")}
         <br />
-        <em>{tNews("sectionTitleAccent")}</em>
+        <em>{tHome("sectionTitleAccent")}</em>
       </h2>
       <div data-news-home-enter style={{ alignSelf: "flex-start" }}>
         <Link

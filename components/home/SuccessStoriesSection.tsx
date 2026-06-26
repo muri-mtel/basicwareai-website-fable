@@ -84,9 +84,9 @@ const CARDS_ZH: Card[] = [
     flag: "🌏",
     photo: "/assets/2_success_home_a.png",
     stats: [
-      { value: "10+", label: "覆盖国家/地区" },
-      { value: "3", label: "核心创始合作方" },
-      { value: "AI 先行计划", label: "全球项目" },
+      { value: "10+", label: "国家" },
+      { value: "3", label: "合作伙伴" },
+      { value: "AI FIRST", label: "国际化项目" },
     ],
   },
   {
@@ -126,9 +126,9 @@ const CARDS_ZH_TW: Card[] = [
     flag: "🌏",
     photo: "/assets/2_success_home_a.png",
     stats: [
-      { value: "10+", label: "覆蓋國家/地區" },
-      { value: "3", label: "核心創始合作方" },
-      { value: "AI 先行計劃", label: "全球項目" },
+      { value: "10+", label: "國家" },
+      { value: "3", label: "合作伙伴" },
+      { value: "AI FIRST", label: "國際化項目" },
     ],
   },
   {
